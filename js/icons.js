@@ -84,19 +84,50 @@
 
     'sign.twoWay': s(
       '<polygon points="50,6 94,50 50,94 6,50" fill="#f7c948" stroke="#222" stroke-width="3"/>' +
-      '<polygon points="40,30 40,55 32,55 44,68 56,55 48,55 48,30" fill="#222"/>' +
-      '<polygon points="60,70 60,45 68,45 56,32 44,45 52,45 52,70" fill="#222" transform="translate(0,-2)"/>'
+      /* Flecha izquierda apuntando ARRIBA */
+      '<path d="M40 70 L40 38 L34 38 L42 26 L50 38 L44 38 L44 70 Z" fill="#222"/>' +
+      /* Flecha derecha apuntando ABAJO */
+      '<path d="M60 30 L60 62 L54 62 L62 74 L70 62 L64 62 L64 30 Z" fill="#222"/>'
     ),
 
     'sign.deer': s(
       '<polygon points="50,6 94,50 50,94 6,50" fill="#f7c948" stroke="#222" stroke-width="3"/>' +
-      '<path d="M40 45 L40 65 L48 65 L48 56 L56 56 L56 65 L64 65 L64 50 L70 44 L65 38 L62 30 L58 26 L52 24 L48 26 Q46 28 44 32 L40 32 L38 36 Z M50 22 L45 14 M55 18 L60 12 M58 18 L65 18" stroke="#222" stroke-width="2.5" fill="#222" stroke-linejoin="round"/>'
+      /* Cuerpo + cuello + cabeza */
+      '<path d="M28 64 L28 56 Q28 50 34 48 L52 48 Q60 48 64 42 L70 32 L72 36 L68 44 L70 52 L72 56 L70 60 L68 56 L64 58 L64 64 L60 64 L60 58 L40 58 L40 64 L36 64 L36 58 L34 58 L32 64 Z" fill="#222"/>' +
+      /* Astas */
+      '<path d="M70 32 L66 24 M70 32 L74 22 M68 28 L72 24 M70 26 L66 22" stroke="#222" stroke-width="1.8" fill="none" stroke-linecap="round"/>'
     ),
 
     'sign.merge': s(
       '<polygon points="50,6 94,50 50,94 6,50" fill="#f7c948" stroke="#222" stroke-width="3"/>' +
-      '<path d="M48 28 L48 80 L52 80 L52 28 Z" fill="#222"/>' +
-      '<path d="M72 36 Q60 50 52 60" stroke="#222" stroke-width="4" fill="none" stroke-linecap="round"/>'
+      /* Carril principal recto */
+      '<path d="M44 80 L44 32 L40 32 L48 22 L56 32 L52 32 L52 80 Z" fill="#222"/>' +
+      /* Carril que se incorpora desde la derecha */
+      '<path d="M76 70 Q60 56 56 44" stroke="#222" stroke-width="5" fill="none" stroke-linecap="round"/>'
+    ),
+
+    /* Cruce ferroviario con crossbuck */
+    'sign.railroadCrossbuck': s(
+      '<g transform="rotate(45 50 50)">' +
+      '<rect x="20" y="42" width="60" height="16" rx="2" fill="#fff" stroke="#222" stroke-width="3"/>' +
+      '<rect x="42" y="20" width="16" height="60" rx="2" fill="#fff" stroke="#222" stroke-width="3"/>' +
+      '<text x="50" y="55" font-family="Arial Black, sans-serif" font-size="9" font-weight="900" fill="#222" text-anchor="middle" transform="rotate(-45 50 50)">RAIL</text>' +
+      '<text x="50" y="55" font-family="Arial Black, sans-serif" font-size="9" font-weight="900" fill="#222" text-anchor="middle" transform="rotate(45 50 50)">ROAD</text>' +
+      '</g>' +
+      '<circle cx="20" cy="50" r="8" fill="#d63b3b"/>' +
+      '<circle cx="80" cy="50" r="8" fill="#3a3a3a"/>'
+    ),
+
+    /* "School Bus Stop Ahead" — diamante amarillo con bus */
+    'sign.schoolBusStop': s(
+      '<polygon points="50,6 94,50 50,94 6,50" fill="#f7c948" stroke="#222" stroke-width="3"/>' +
+      '<rect x="28" y="38" width="44" height="22" rx="3" fill="#222"/>' +
+      '<rect x="32" y="42" width="8" height="8" fill="#f7c948"/>' +
+      '<rect x="44" y="42" width="8" height="8" fill="#f7c948"/>' +
+      '<rect x="56" y="42" width="8" height="8" fill="#f7c948"/>' +
+      '<circle cx="36" cy="64" r="3" fill="#222"/>' +
+      '<circle cx="64" cy="64" r="3" fill="#222"/>' +
+      '<text x="50" y="78" font-family="Arial Black, sans-serif" font-size="8" font-weight="900" fill="#222" text-anchor="middle">SCHOOL BUS</text>'
     ),
 
     'sign.curve': s(
@@ -233,14 +264,15 @@
     ),
 
     'signal.laneGreenArrow': s(
-      '<rect x="10" y="20" width="80" height="60" rx="3" fill="#1a1a1a"/>' +
-      '<polygon points="38,56 38,46 56,46 56,38 72,50 56,62 56,56" fill="#34c759"/>'
+      '<rect x="6" y="10" width="88" height="80" rx="4" fill="#1a1a1a"/>' +
+      '<polygon points="50,82 28,52 40,52 40,22 60,22 60,52 72,52" fill="#34c759"/>' +
+      '<polygon points="50,82 28,52 40,52 40,22 60,22 60,52 72,52" fill="#a4eab8" opacity="0.4"/>'
     ),
 
     'signal.laneRedX': s(
-      '<rect x="10" y="20" width="80" height="60" rx="3" fill="#1a1a1a"/>' +
-      '<line x1="30" y1="35" x2="70" y2="65" stroke="#d63b3b" stroke-width="9" stroke-linecap="round"/>' +
-      '<line x1="70" y1="35" x2="30" y2="65" stroke="#d63b3b" stroke-width="9" stroke-linecap="round"/>'
+      '<rect x="6" y="10" width="88" height="80" rx="4" fill="#1a1a1a"/>' +
+      '<line x1="26" y1="26" x2="74" y2="74" stroke="#d63b3b" stroke-width="11" stroke-linecap="round"/>' +
+      '<line x1="74" y1="26" x2="26" y2="74" stroke="#d63b3b" stroke-width="11" stroke-linecap="round"/>'
     ),
 
     /* ---------- Marcas viales ---------- */

@@ -457,8 +457,8 @@ window.QUESTIONS = [
     id: 20, category: 'signs',
     image: 'signal.laneGreenArrow',
     question: {
-      es: 'En Colorado, una señal de carril reversible con una flecha verde encima del carril significa:',
-      en: 'A reversible-lane signal with a green arrow above the lane means:'
+      es: 'Una señal de control de carril con una flecha verde apuntando hacia abajo encima de un carril significa:',
+      en: 'A lane-control signal showing a green downward arrow above a lane means:'
     },
     options: [
       { es: 'No circule en ese carril', en: 'Do not use that lane' },
@@ -3345,10 +3345,10 @@ window.QUESTIONS = [
   },
   {
     id: 168, category: 'rightOfWay',
-    image: 'sign.railroad',
+    image: 'sign.railroadCrossbuck',
     question: {
-      es: 'Cuando llega a un cruce ferroviario con barreras bajas y luces parpadeando:',
-      en: 'When you reach a railroad crossing with the gates down and lights flashing:'
+      es: 'Cuando llega a un cruce ferroviario con barreras bajas y luces rojas parpadeando:',
+      en: 'When you reach a railroad crossing with the gates down and red lights flashing:'
     },
     options: [
       { es: 'Cruce rápido', en: 'Cross quickly' },
@@ -3365,10 +3365,10 @@ window.QUESTIONS = [
   },
   {
     id: 169, category: 'signs',
-    image: 'sign.school',
+    image: 'sign.schoolBusStop',
     question: {
-      es: 'Una señal con la imagen de un camión escolar y el texto "SCHOOL BUS STOP AHEAD" indica:',
-      en: 'A sign showing a school bus and the text "SCHOOL BUS STOP AHEAD" indicates:'
+      es: 'Una señal amarilla en forma de diamante con la imagen de un autobús escolar y el texto "SCHOOL BUS STOP AHEAD" indica:',
+      en: 'A yellow diamond sign showing a school bus and the text "SCHOOL BUS STOP AHEAD" indicates:'
     },
     options: [
       { es: 'Carril exclusivo de buses', en: 'Bus-only lane' },
@@ -3783,6 +3783,390 @@ window.QUESTIONS = [
       en: 'In Colorado, public transit buses leaving a stop with their signal on have right of way. Yield when it is safe to do so.'
     },
     sourceReference: { es: 'Ley estatal de Colorado · CRS 42-4-707', en: 'Colorado law · CRS 42-4-707' }
+  },
+
+  /* ===== PREGUNTAS ADICIONALES (basadas en exámenes recientes) ===== */
+
+  {
+    id: 191, category: 'general',
+    question: {
+      es: 'En Colorado, los niños deben usar asiento elevador (booster seat) hasta cumplir:',
+      en: 'In Colorado, children must use a booster seat until they are at least:'
+    },
+    options: [
+      { es: '4 años', en: '4 years old' },
+      { es: '6 años', en: '6 years old' },
+      { es: '8 años (o hasta medir 4 pies 9 pulgadas)', en: '8 years old (or until 4 feet 9 inches tall)' },
+      { es: '12 años', en: '12 years old' }
+    ],
+    correctAnswer: 2,
+    explanation: {
+      es: 'Los niños de 4 a 7 años deben viajar en booster seat. Cumplido los 8 años, o al alcanzar 4 pies 9 pulgadas de estatura, pueden usar el cinturón estándar.',
+      en: 'Children ages 4 to 7 must ride in a booster seat. At age 8 or when 4 feet 9 inches tall, they may use the standard seat belt.'
+    },
+    sourceReference: { es: 'Ley estatal de Colorado · CRS 42-4-236', en: 'Colorado law · CRS 42-4-236' }
+  },
+  {
+    id: 192, category: 'alcohol',
+    question: {
+      es: 'En Colorado, una cuarta condena por DUI o DWAI se clasifica como:',
+      en: 'In Colorado, a fourth DUI or DWAI conviction is classified as:'
+    },
+    options: [
+      { es: 'Una infracción de tránsito menor', en: 'A minor traffic infraction' },
+      { es: 'Un delito menor (misdemeanor)', en: 'A misdemeanor' },
+      { es: 'Un delito grave (felonía clase 4)', en: 'A felony (class 4)' },
+      { es: 'Una advertencia', en: 'A warning' }
+    ],
+    correctAnswer: 2,
+    explanation: {
+      es: 'Desde 2015, un cuarto (o posterior) DUI/DWAI en Colorado es una felonía clase 4: hasta 6 años de prisión, multas elevadas y revocación de licencia.',
+      en: 'Since 2015, a fourth (or later) DUI/DWAI in Colorado is a class 4 felony: up to 6 years in prison, heavy fines and license revocation.'
+    },
+    sourceReference: { es: 'Ley estatal de Colorado · HB 15-1043', en: 'Colorado law · HB 15-1043' }
+  },
+  {
+    id: 193, category: 'rightOfWay',
+    question: {
+      es: 'Al cruzar las vías del tren ligero (light rail) de RTD en Colorado, debe recordar que:',
+      en: 'When crossing RTD light rail tracks in Colorado, you should remember that:'
+    },
+    options: [
+      { es: 'El tren siempre cede el paso a los vehículos', en: 'The train always yields to vehicles' },
+      { es: 'El tren siempre tiene el derecho de paso; nunca intente ganarle al cruce', en: 'The train always has the right of way; never try to beat it across' },
+      { es: 'Puede cruzar sin mirar si hay barreras', en: 'You can cross without looking if gates are present' },
+      { es: 'Sólo aplican señales fuera de Denver', en: 'Signals only apply outside Denver' }
+    ],
+    correctAnswer: 1,
+    explanation: {
+      es: 'El tren ligero pesa cientos de toneladas y no puede frenar rápido. Siempre cede el paso al tren, obedece las luces y barreras, y nunca cruce mientras suene la campana.',
+      en: 'A light-rail train weighs hundreds of tons and cannot stop quickly. Always yield to the train, obey lights and gates, and never cross while the bell is ringing.'
+    },
+    sourceReference: { es: 'Manual del Conductor de Colorado · Cruces ferroviarios y de tren ligero', en: 'Colorado Driver Handbook · Rail and light-rail crossings' }
+  },
+  {
+    id: 194, category: 'rightOfWay',
+    question: {
+      es: 'Cuando una procesión funeraria está pasando y su primer vehículo cruzó una intersección con luz verde:',
+      en: 'When a funeral procession is passing and its lead vehicle entered an intersection on green:'
+    },
+    options: [
+      { es: 'Los demás vehículos pueden continuar el cruce aunque la luz cambie a rojo', en: 'The remaining vehicles may continue through even if the light turns red' },
+      { es: 'Cada vehículo debe detenerse en su propia luz roja', en: 'Each vehicle must stop on its own red light' },
+      { es: 'La procesión no tiene prioridad', en: 'The procession has no priority' },
+      { es: 'Sólo aplica si hay escolta policial', en: 'Only applies with police escort' }
+    ],
+    correctAnswer: 0,
+    explanation: {
+      es: 'Una vez el primer vehículo de la procesión funeraria entra a una intersección legalmente, los demás vehículos del cortejo pueden continuar juntos. Otros conductores deben cederles el paso.',
+      en: 'Once the lead vehicle of a funeral procession lawfully enters an intersection, the rest of the procession may continue together. Other drivers must yield.'
+    },
+    sourceReference: { es: 'Ley estatal de Colorado · CRS 42-4-705', en: 'Colorado law · CRS 42-4-705' }
+  },
+  {
+    id: 195, category: 'general',
+    question: {
+      es: 'Un triángulo naranja reflectante en la parte trasera de un vehículo indica:',
+      en: 'A reflective orange triangle on the back of a vehicle indicates:'
+    },
+    options: [
+      { es: 'Vehículo de emergencia', en: 'Emergency vehicle' },
+      { es: 'Vehículo lento (25 mph o menos), como maquinaria agrícola', en: 'Slow-moving vehicle (25 mph or less), such as farm equipment' },
+      { es: 'Vehículo escolar', en: 'School vehicle' },
+      { es: 'Vehículo militar', en: 'Military vehicle' }
+    ],
+    correctAnswer: 1,
+    explanation: {
+      es: 'El triángulo naranja reflectante señala vehículos que no pueden superar 25 mph (tractores, equipo agrícola, buggies). Reduzca la velocidad y rebase con precaución sólo cuando sea seguro.',
+      en: 'The reflective orange triangle marks vehicles that cannot exceed 25 mph (tractors, farm equipment, buggies). Slow down and pass only when safe.'
+    },
+    sourceReference: { es: 'Manual del Conductor de Colorado · Vehículos lentos', en: 'Colorado Driver Handbook · Slow-moving vehicles' }
+  },
+  {
+    id: 196, category: 'documents',
+    question: {
+      es: 'Conducir con el parabrisas agrietado o roto al punto de obstruir la visión es:',
+      en: 'Driving with a cracked or broken windshield that obstructs vision is:'
+    },
+    options: [
+      { es: 'Legal mientras pueda ver algo', en: 'Legal as long as you can see something' },
+      { es: 'Una infracción de equipamiento del vehículo', en: 'A vehicle equipment violation' },
+      { es: 'Sólo problema en autopista', en: 'Only a problem on highways' },
+      { es: 'Permitido sólo de día', en: 'Allowed only during the day' }
+    ],
+    correctAnswer: 1,
+    explanation: {
+      es: 'En Colorado el parabrisas debe estar libre de obstrucciones que reduzcan la visibilidad. Manejar con un parabrisas dañado constituye infracción de equipamiento.',
+      en: 'In Colorado the windshield must be free of obstructions that reduce visibility. Driving with a damaged windshield is an equipment violation.'
+    },
+    sourceReference: { es: 'Ley estatal de Colorado · CRS 42-4-201 (equipamiento)', en: 'Colorado law · CRS 42-4-201 (equipment)' }
+  },
+  {
+    id: 197, category: 'highway',
+    question: {
+      es: 'Dar marcha atrás en una autopista o vía rápida:',
+      en: 'Backing up on a highway or freeway is:'
+    },
+    options: [
+      { es: 'Es permitido si las luces de emergencia están encendidas', en: 'Allowed if hazard lights are on' },
+      { es: 'Está prohibido y es altamente peligroso', en: 'Prohibited and extremely dangerous' },
+      { es: 'Se permite en el acotamiento', en: 'Allowed on the shoulder' },
+      { es: 'Sólo se permite de día', en: 'Allowed only during the day' }
+    ],
+    correctAnswer: 1,
+    explanation: {
+      es: 'En autopistas, vías rápidas e interestatales está prohibido dar marcha atrás. Si pierde una salida, continúe hasta la próxima y dé la vuelta.',
+      en: 'Backing up on highways, freeways and interstates is prohibited. If you miss an exit, continue to the next one and turn around.'
+    },
+    sourceReference: { es: 'Ley estatal de Colorado · CRS 42-4-1402', en: 'Colorado law · CRS 42-4-1402' }
+  },
+  {
+    id: 198, category: 'general',
+    question: {
+      es: 'Conducir con audífonos o auriculares cubriendo ambos oídos en Colorado:',
+      en: 'Driving with headphones or earbuds covering both ears in Colorado:'
+    },
+    options: [
+      { es: 'Es legal', en: 'Is legal' },
+      { es: 'Está prohibido; sólo se permite un audífono o ninguno', en: 'Is prohibited; only one earpiece (or none) is allowed' },
+      { es: 'Es legal sólo en autopistas', en: 'Is legal only on highways' },
+      { es: 'Es legal para conductores con CDL', en: 'Is legal for CDL drivers' }
+    ],
+    correctAnswer: 1,
+    explanation: {
+      es: 'Conducir con ambos oídos cubiertos por audífonos es ilegal en Colorado porque impide oír sirenas y claxons. Se permite un solo auricular o sistemas integrados.',
+      en: 'Driving with both ears covered by headphones is illegal in Colorado because it prevents you from hearing sirens and horns. One earpiece or integrated systems are allowed.'
+    },
+    sourceReference: { es: 'Ley estatal de Colorado · CRS 42-4-1411', en: 'Colorado law · CRS 42-4-1411' }
+  },
+  {
+    id: 199, category: 'winter',
+    question: {
+      es: 'Al compartir el camino con una máquina quitanieves (snow plow) en Colorado, debe:',
+      en: 'When sharing the road with a snow plow in Colorado, you should:'
+    },
+    options: [
+      { es: 'Rebasar por la derecha rápidamente', en: 'Pass on the right quickly' },
+      { es: 'Mantener al menos 200 pies de distancia y nunca rebasarlo por la derecha', en: 'Stay at least 200 feet back and never pass on the right' },
+      { es: 'Pegarse para no perder su rastro', en: 'Stay close to follow its tracks' },
+      { es: 'Tocar el claxon para que se mueva', en: 'Honk so it moves over' }
+    ],
+    correctAnswer: 1,
+    explanation: {
+      es: 'Los quitanieves arrojan nieve, hielo y materiales hacia los lados. Mantenga distancia, no rebase por la derecha y permita que hagan su trabajo: la vía detrás de ellos es la más segura.',
+      en: 'Snow plows throw snow, ice and material to the sides. Stay back, never pass on the right, and let them work — the road behind the plow is the safest.'
+    },
+    sourceReference: { es: 'CDOT · Snow Plow Safety', en: 'CDOT · Snow Plow Safety' }
+  },
+  {
+    id: 200, category: 'highway',
+    question: {
+      es: 'En una carretera de dos carriles, si cinco o más vehículos se acumulan detrás de un vehículo lento, el conductor más lento debe:',
+      en: 'On a two-lane road, when five or more vehicles pile up behind a slow driver, the slow driver should:'
+    },
+    options: [
+      { es: 'Acelerar al máximo posible', en: 'Accelerate as fast as possible' },
+      { es: 'Orillarse en el primer lugar seguro y permitir que pasen', en: 'Pull over at the first safe place and let them pass' },
+      { es: 'Mantener su velocidad', en: 'Maintain their speed' },
+      { es: 'Detenerse en el carril', en: 'Stop in the lane' }
+    ],
+    correctAnswer: 1,
+    explanation: {
+      es: 'La ley de Colorado obliga al conductor lento a orillarse cuando haya un sitio seguro y cinco o más vehículos detrás esperando para rebasar.',
+      en: 'Colorado law requires the slow driver to pull over at a safe spot when five or more vehicles are behind waiting to pass.'
+    },
+    sourceReference: { es: 'Ley estatal de Colorado · CRS 42-4-1014', en: 'Colorado law · CRS 42-4-1014' }
+  },
+  {
+    id: 201, category: 'documents',
+    question: {
+      es: 'En Colorado, la prueba del seguro vehicular:',
+      en: 'In Colorado, proof of auto insurance:'
+    },
+    options: [
+      { es: 'Sólo se acepta en papel', en: 'Is only accepted on paper' },
+      { es: 'Se acepta en formato electrónico (en el celular)', en: 'Is accepted in electronic format (on a phone)' },
+      { es: 'No es obligatoria portarla', en: 'Is not required to carry' },
+      { es: 'Sólo se entrega al cliente nuevo del seguro', en: 'Is only given when first buying insurance' }
+    ],
+    correctAnswer: 1,
+    explanation: {
+      es: 'En Colorado puede mostrar la prueba de seguro de manera electrónica desde su teléfono al oficial de policía. Es válida igual que la copia impresa.',
+      en: 'In Colorado you may show electronic proof of insurance on your phone to a police officer. It is just as valid as a printed copy.'
+    },
+    sourceReference: { es: 'Ley estatal de Colorado · CRS 42-4-1409', en: 'Colorado law · CRS 42-4-1409' }
+  },
+  {
+    id: 202, category: 'pedestrians',
+    question: {
+      es: 'En un semáforo peatonal, una mano blanca que parpadea (o "DON\'T WALK" intermitente) significa:',
+      en: 'At a pedestrian signal, a flashing white hand (or flashing "DON\'T WALK") means:'
+    },
+    options: [
+      { es: 'Comience a cruzar', en: 'Begin crossing' },
+      { es: 'No comience a cruzar; si ya está cruzando, complete el cruce con seguridad', en: 'Do not begin crossing; if you are already crossing, finish safely' },
+      { es: 'La calle está cerrada', en: 'The street is closed' },
+      { es: 'Sólo los ciclistas pueden cruzar', en: 'Only bikes may cross' }
+    ],
+    correctAnswer: 1,
+    explanation: {
+      es: 'La mano blanca intermitente avisa que el tiempo para cruzar está terminando: no comience a cruzar, pero si ya está en el cruce, termine de pasar.',
+      en: 'A flashing white hand warns that crossing time is ending: do not begin to cross, but finish if already in the crosswalk.'
+    },
+    sourceReference: { es: 'Manual del Conductor de Colorado · Semáforos peatonales', en: 'Colorado Driver Handbook · Pedestrian signals' }
+  },
+  {
+    id: 203, category: 'pedestrians',
+    question: {
+      es: 'Cuando un vehículo está detenido en un paso de peatones marcado para dejar cruzar a alguien, los vehículos en los carriles adyacentes deben:',
+      en: 'When a vehicle is stopped at a marked crosswalk for a pedestrian, vehicles in adjacent lanes must:'
+    },
+    options: [
+      { es: 'Rebasar al vehículo detenido', en: 'Pass the stopped vehicle' },
+      { es: 'No rebasar al vehículo detenido', en: 'Not pass the stopped vehicle' },
+      { es: 'Tocar el claxon', en: 'Honk' },
+      { es: 'Acelerar', en: 'Speed up' }
+    ],
+    correctAnswer: 1,
+    explanation: {
+      es: 'Está prohibido rebasar a un vehículo detenido en un paso peatonal. Quien rebasa puede atropellar a un peatón que el otro conductor sí veía y por eso se detuvo.',
+      en: 'It is illegal to pass a vehicle stopped at a crosswalk. The passing driver may hit a pedestrian that the stopped driver was yielding to.'
+    },
+    sourceReference: { es: 'Ley estatal de Colorado · CRS 42-4-802', en: 'Colorado law · CRS 42-4-802' }
+  },
+  {
+    id: 204, category: 'pedestrians',
+    question: {
+      es: 'Puede manejar en un carril de bicicletas (bike lane) sólo cuando:',
+      en: 'You may drive in a bike lane only when:'
+    },
+    options: [
+      { es: 'Hay tráfico pesado', en: 'There is heavy traffic' },
+      { es: 'Está a punto de girar a la derecha o de estacionarse, ingresando con seguridad', en: 'You are about to turn right or park, entering safely' },
+      { es: 'Quiere rebasar a vehículos lentos', en: 'You want to pass slow vehicles' },
+      { es: 'Está oscuro', en: 'It is dark' }
+    ],
+    correctAnswer: 1,
+    explanation: {
+      es: 'Los carriles para bicicletas son sólo para ciclistas. Un vehículo motorizado únicamente puede cruzarlos brevemente para girar a la derecha o estacionarse, siempre cediendo el paso.',
+      en: 'Bike lanes are for cyclists only. A motor vehicle may only briefly cross them to turn right or park, always yielding.'
+    },
+    sourceReference: { es: 'Manual del Conductor de Colorado · Compartir el camino', en: 'Colorado Driver Handbook · Sharing the road' }
+  },
+  {
+    id: 205, category: 'emergency',
+    question: {
+      es: 'Si choca con un vehículo estacionado y no encuentra al dueño, usted debe:',
+      en: 'If you hit a parked vehicle and cannot find the owner, you must:'
+    },
+    options: [
+      { es: 'Irse, no es su responsabilidad', en: 'Leave; it is not your responsibility' },
+      { es: 'Dejar una nota con su nombre, teléfono y datos de contacto en un lugar visible', en: 'Leave a note with your name, phone and contact information in a visible place' },
+      { es: 'Esperar 5 minutos y luego irse', en: 'Wait 5 minutes and then leave' },
+      { es: 'Llamar a su seguro y nada más', en: 'Just call your insurance' }
+    ],
+    correctAnswer: 1,
+    explanation: {
+      es: 'Si choca un vehículo estacionado, debe ubicar al dueño o, si no lo encuentra, dejar una nota con sus datos. Irse sin hacerlo es "hit and run" y puede ser delito.',
+      en: 'If you hit a parked vehicle, you must find the owner or, failing that, leave a note with your information. Leaving without doing so is a hit and run and can be a crime.'
+    },
+    sourceReference: { es: 'Ley estatal de Colorado · CRS 42-4-1602', en: 'Colorado law · CRS 42-4-1602' }
+  },
+  {
+    id: 206, category: 'lights',
+    question: {
+      es: 'Los faros delanteros del vehículo deben estar limpios y funcionando porque:',
+      en: 'Vehicle headlights must be clean and working because:'
+    },
+    options: [
+      { es: 'Mejoran el aspecto del auto', en: 'They make the car look nice' },
+      { es: 'Permiten ver la vía y que otros lo vean a usted', en: 'They let you see the road and let others see you' },
+      { es: 'Sólo son útiles en autopistas', en: 'They are only useful on highways' },
+      { es: 'Reducen el consumo de gasolina', en: 'They reduce fuel use' }
+    ],
+    correctAnswer: 1,
+    explanation: {
+      es: 'Los faros sirven para ver y ser visto. Mantenerlos limpios, alineados y funcionales es obligatorio; conducir con luces fundidas es infracción.',
+      en: 'Headlights help you see and be seen. Keeping them clean, aimed and working is mandatory; driving with burned-out lights is a violation.'
+    },
+    sourceReference: { es: 'Manual del Conductor de Colorado · Equipamiento', en: 'Colorado Driver Handbook · Equipment' }
+  },
+  {
+    id: 207, category: 'alcohol',
+    question: {
+      es: 'En Colorado, si rechaza la prueba química por segunda vez, su licencia será revocada por:',
+      en: 'In Colorado, refusing the chemical test a second time results in license revocation for:'
+    },
+    options: [
+      { es: '6 meses', en: '6 months' },
+      { es: '1 año', en: '1 year' },
+      { es: '2 años', en: '2 years' },
+      { es: '5 años', en: '5 years' }
+    ],
+    correctAnswer: 2,
+    explanation: {
+      es: 'Bajo la Express Consent Law, la primera negativa son 1 año, la segunda 2 años y la tercera 3 años de revocación automática, sumadas a las consecuencias de DUI.',
+      en: 'Under the Express Consent Law, the first refusal triggers 1 year, the second 2 years and the third 3 years of automatic revocation, on top of DUI consequences.'
+    },
+    sourceReference: { es: 'Ley estatal de Colorado · CRS 42-4-1301.1', en: 'Colorado law · CRS 42-4-1301.1' }
+  },
+  {
+    id: 208, category: 'general',
+    question: {
+      es: 'Usar el claxon de forma prolongada o sin motivo de seguridad:',
+      en: 'Using your horn at length or without a safety reason:'
+    },
+    options: [
+      { es: 'Es buena costumbre', en: 'Is good practice' },
+      { es: 'Es una infracción de tránsito; el claxon es para advertencias', en: 'Is a traffic violation; the horn is for warnings' },
+      { es: 'Es obligatorio en intersecciones', en: 'Is required at intersections' },
+      { es: 'Sólo está permitido de noche', en: 'Is only allowed at night' }
+    ],
+    correctAnswer: 1,
+    explanation: {
+      es: 'El claxon es un dispositivo de seguridad. Tocarlo de forma innecesaria o agresiva puede ser sancionado como conducción imprudente o ruido excesivo.',
+      en: 'The horn is a safety device. Honking unnecessarily or aggressively can be cited as reckless driving or excessive noise.'
+    },
+    sourceReference: { es: 'Ley estatal de Colorado · CRS 42-4-225', en: 'Colorado law · CRS 42-4-225' }
+  },
+  {
+    id: 209, category: 'rightOfWay',
+    image: 'inter.fourWay',
+    question: {
+      es: 'En una intersección con señales de PARE en los cuatro sentidos, si llegan dos vehículos al mismo tiempo enfrentados (cara a cara) y uno va a girar a la izquierda:',
+      en: 'At a four-way stop, if two vehicles arrive simultaneously facing each other and one is turning left:'
+    },
+    options: [
+      { es: 'El que va a girar a la izquierda pasa primero', en: 'The one turning left goes first' },
+      { es: 'El que va recto (o gira a la derecha) tiene prioridad sobre el que gira a la izquierda', en: 'The one going straight (or turning right) has priority over the one turning left' },
+      { es: 'Ambos avanzan al mismo tiempo', en: 'Both proceed at the same time' },
+      { es: 'El más grande tiene prioridad', en: 'The bigger vehicle goes first' }
+    ],
+    correctAnswer: 1,
+    explanation: {
+      es: 'Quien gira a la izquierda siempre cede el paso al tráfico opuesto, incluso en un PARE de cuatro vías.',
+      en: 'A driver turning left must always yield to oncoming traffic, even at a four-way stop.'
+    },
+    sourceReference: { es: 'Manual del Conductor de Colorado · Intersecciones', en: 'Colorado Driver Handbook · Intersections' }
+  },
+  {
+    id: 210, category: 'general',
+    question: {
+      es: 'Para reducir el riesgo de robo del vehículo cuando se estaciona, se recomienda:',
+      en: 'To reduce vehicle theft risk when parking, it is recommended to:'
+    },
+    options: [
+      { es: 'Dejar las llaves puestas y motor encendido', en: 'Leave the keys in and engine running' },
+      { es: 'Apagar el motor, retirar la llave, cerrar las ventanas y poner el seguro', en: 'Turn off the engine, take the key, close windows and lock the doors' },
+      { es: 'Bajar las ventanas para que se ventile', en: 'Lower the windows for ventilation' },
+      { es: 'Dejar objetos de valor a la vista', en: 'Leave valuables in plain sight' }
+    ],
+    correctAnswer: 1,
+    explanation: {
+      es: 'En Colorado es ilegal dejar el vehículo desatendido con el motor encendido. Apague, retire la llave, suba ventanas y ponga el seguro. No deje objetos visibles.',
+      en: 'In Colorado it is illegal to leave a vehicle unattended with the engine running. Turn it off, take the key, roll up windows and lock. Do not leave valuables visible.'
+    },
+    sourceReference: { es: 'Ley estatal de Colorado · CRS 42-4-1206', en: 'Colorado law · CRS 42-4-1206' }
   }
 
 ];

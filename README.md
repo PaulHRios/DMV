@@ -15,12 +15,12 @@ oficial del DMV ni está afiliado al gobierno del estado de Colorado.
 
 - **100% estático** (HTML, CSS y JavaScript vanilla). Sin backend, sin
   build, sin dependencias de Node.
-- **Banco de 190 preguntas** bilingües (español / inglés) cubriendo
+- **Banco de 210 preguntas** bilingües (español / inglés) cubriendo
   señales, semáforos, derecho de paso, velocidad, distancia, DUI/DWAI,
   peatones y ciclistas, buses escolares, manejo en invierno, autopistas,
   estacionamiento, luces, adelantamiento, emergencias, documentos/seguro,
   reglas generales y rotondas.
-- **Imágenes inline (SVG)** para ~47 preguntas con señales, marcas viales,
+- **Imágenes inline (SVG)** para ~48 preguntas con señales, marcas viales,
   semáforos, señales manuales del brazo y estacionamiento en pendiente.
   Las ilustraciones viven en `js/icons.js` y se generan localmente — sin
   CDN ni imágenes externas.
