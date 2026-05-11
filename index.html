@@ -82,6 +82,9 @@
           <button type="button" class="btn btn-primary btn-lg" id="btn-start-exam" data-i18n="home.start">
             Iniciar examen
           </button>
+          <button type="button" class="btn btn-danger btn-lg" id="btn-start-hard" data-i18n="home.startHard">
+            Examen difícil
+          </button>
           <button type="button" class="btn btn-secondary btn-lg" id="btn-study-mode" data-i18n="home.study">
             Modo estudio por categoría
           </button>
@@ -142,6 +145,7 @@
               <span data-i18n="exam.of">de</span>
               <span id="exam-total">25</span>
             </h1>
+            <span id="exam-mode-badge" class="exam-mode-badge" hidden data-i18n="exam.hardBadge">DIFÍCIL</span>
           </div>
           <div class="exam-meta-right">
             <button type="button" class="btn-flag" id="btn-flag" aria-pressed="false" title="Marcar para revisar">
@@ -335,6 +339,7 @@
 
   <script src="./js/icons.js"></script>
   <script src="./js/questions.js"></script>
+  <script src="./js/questions-hard.js"></script>
   <script src="./js/i18n.js"></script>
   <script src="./js/app.js"></script>
   <script>

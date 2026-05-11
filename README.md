@@ -15,7 +15,7 @@ oficial del DMV ni está afiliado al gobierno del estado de Colorado.
 
 - **100% estático** (HTML, CSS y JavaScript vanilla). Sin backend, sin
   build, sin dependencias de Node.
-- **Banco de 210 preguntas** bilingües (español / inglés) cubriendo
+- **Banco principal de 210 preguntas** bilingües (español / inglés) cubriendo
   señales, semáforos, derecho de paso, velocidad, distancia, DUI/DWAI,
   peatones y ciclistas, buses escolares, manejo en invierno, autopistas,
   estacionamiento, luces, adelantamiento, emergencias, documentos/seguro,
@@ -24,8 +24,14 @@ oficial del DMV ni está afiliado al gobierno del estado de Colorado.
   semáforos, señales manuales del brazo y estacionamiento en pendiente.
   Las ilustraciones viven en `js/icons.js` y se generan localmente — sin
   CDN ni imágenes externas.
+- **Banco difícil de 100 preguntas adicionales** (`questions-hard.js`)
+  con números exactos, leyes específicas (CRS) y escenarios
+  hipotéticos. Pensadas para una práctica muy exigente más allá del
+  examen real promedio.
 - **Examen aleatorio** de 25 preguntas sin repetir, con orden de opciones
-  mezclado en cada intento.
+  mezclado en cada intento. Existe un **botón "Examen difícil"** que
+  toma 25 preguntas aleatorias del banco difícil y eleva la
+  aprobación a 90%.
 - **Banderín por pregunta** para marcarla y revisarla luego (tecla `F`).
 - **Mapa de preguntas** con leyenda (actual, respondida, marcada).
 - **Cronómetro** opcional.

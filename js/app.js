@@ -35,8 +35,11 @@
   /* ---------- Helpers ---------- */
 
   const QUESTIONS = window.QUESTIONS || [];
+  const QUESTIONS_HARD = window.QUESTIONS_HARD || [];
   const CATEGORIES = window.QUESTION_CATEGORIES || [];
   const getIcon = window.getIcon || function () { return null; };
+
+  const HARD_PASSING_PERCENT = 90;
 
   function $(sel, root) { return (root || document).querySelector(sel); }
   function $$(sel, root) { return Array.from((root || document).querySelectorAll(sel)); }
@@ -140,8 +143,9 @@
       correct: result.correctCount,
       percent: result.percent,
       passed: result.passed,
-      thresholdPercent: CONFIG.PASSING_PERCENT,
+      thresholdPercent: result.passingThreshold || CONFIG.PASSING_PERCENT,
       durationMs: result.durationMs,
+      hard: !!result.hard,
     });
     if (stats.exams.length > 200) stats.exams = stats.exams.slice(-200);
     saveStats(stats);
@@ -173,9 +177,11 @@
     onlyWrong: false,
   };
 
-  function buildExam() {
-    const picked = sample(QUESTIONS, CONFIG.QUESTIONS_PER_EXAM);
+  function buildExam(hard) {
+    const pool = hard ? QUESTIONS_HARD : QUESTIONS;
+    const picked = sample(pool, CONFIG.QUESTIONS_PER_EXAM);
     return {
+      hard: !!hard,
       questions: picked,
       optionOrders: picked.map((q) => shuffle(q.options.map((_, i) => i))),
       answers: new Array(picked.length).fill(null),
@@ -187,11 +193,24 @@
   }
 
   function startExam() {
-    state.exam = buildExam();
+    state.exam = buildExam(false);
     state.onlyWrong = false;
     renderExam();
     showView('view-exam');
     startTimer();
+  }
+
+  function startHardExam() {
+    if (!window.confirm(window.I18N.t('home.hardConfirm'))) return;
+    state.exam = buildExam(true);
+    state.onlyWrong = false;
+    renderExam();
+    showView('view-exam');
+    startTimer();
+  }
+
+  function currentPassingPercent() {
+    return state.exam && state.exam.hard ? HARD_PASSING_PERCENT : CONFIG.PASSING_PERCENT;
   }
 
   /* ---------- Render del examen ---------- */
@@ -219,6 +238,12 @@
 
     $('#exam-current').textContent = String(exam.index + 1);
     $('#exam-total').textContent = String(exam.questions.length);
+
+    // Hard mode indicators
+    const badge = $('#exam-mode-badge');
+    if (badge) badge.hidden = !exam.hard;
+    const eyebrow = document.querySelector('.exam-eyebrow');
+    if (eyebrow) eyebrow.textContent = window.I18N.t(exam.hard ? 'exam.eyebrowHard' : 'exam.eyebrow');
 
     const progress = ((exam.index + 1) / exam.questions.length) * 100;
     const progressBar = $('#exam-progress');
@@ -388,9 +413,10 @@
     const correctCount = details.filter((d) => d.correct).length;
     const total = details.length;
     const percent = total === 0 ? 0 : Math.round((correctCount / total) * 100);
-    const passed = percent >= CONFIG.PASSING_PERCENT;
+    const passing = currentPassingPercent();
+    const passed = percent >= passing;
     const durationMs = (exam.finishedAt || Date.now()) - exam.startedAt;
-    return { details, correctCount, incorrectCount: total - correctCount, total, percent, passed, durationMs };
+    return { details, correctCount, incorrectCount: total - correctCount, total, percent, passed, durationMs, hard: !!exam.hard, passingThreshold: passing };
   }
 
   function renderResults(r) {
@@ -704,6 +730,8 @@
     });
 
     $('#btn-start-exam').addEventListener('click', startExam);
+    const btnHard = $('#btn-start-hard');
+    if (btnHard) btnHard.addEventListener('click', startHardExam);
     $('#btn-study-mode').addEventListener('click', () => {
       state.study = null;
       $('#study-card').hidden = true;
@@ -727,7 +755,18 @@
     $('#btn-cancel-exam').addEventListener('click', cancelExam);
     $('#btn-flag').addEventListener('click', toggleFlag);
 
-    $('#btn-restart').addEventListener('click', startExam);
+    $('#btn-restart').addEventListener('click', () => {
+      const wasHard = state._lastResult && state._lastResult.hard;
+      if (wasHard) {
+        state.exam = buildExam(true);
+      } else {
+        state.exam = buildExam(false);
+      }
+      state.onlyWrong = false;
+      renderExam();
+      showView('view-exam');
+      startTimer();
+    });
     $('#btn-review-toggle').addEventListener('click', toggleReview);
     $('#btn-home').addEventListener('click', () => {
       state.exam = null;
