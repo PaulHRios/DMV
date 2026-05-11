@@ -94,6 +94,10 @@
 
 * { box-sizing: border-box; }
 
+/* El atributo HTML `hidden` debe ganar sobre cualquier `display` definido por
+   clases (modal usa `display: flex`, imágenes `display: flex`, etc.) */
+[hidden] { display: none !important; }
+
 html, body {
   margin: 0;
   padding: 0;

@@ -265,11 +265,24 @@
       optionsRoot.appendChild(label);
     });
 
-    // Nav buttons
+    // Nav buttons — en la última pregunta el botón "Siguiente" se
+    // convierte en "Finalizar examen" (mismo botón, ya con estilo success).
     $('#btn-prev').disabled = exam.index === 0;
     const isLast = exam.index === exam.questions.length - 1;
-    $('#btn-next').hidden = isLast;
-    $('#btn-finish').hidden = !isLast;
+    const nextBtn = $('#btn-next');
+    nextBtn.hidden = false;
+    $('#btn-finish').hidden = true;
+    if (isLast) {
+      nextBtn.textContent = window.I18N.t('exam.finish');
+      nextBtn.classList.remove('btn-primary');
+      nextBtn.classList.add('btn-success');
+      nextBtn.dataset.role = 'finish';
+    } else {
+      nextBtn.textContent = window.I18N.t('exam.next');
+      nextBtn.classList.remove('btn-success');
+      nextBtn.classList.add('btn-primary');
+      nextBtn.dataset.role = 'next';
+    }
 
     // Timer visibility
     $('#exam-timer').classList.toggle('is-hidden', !CONFIG.SHOW_TIMER);
@@ -702,7 +715,13 @@
       if (state.exam.index > 0) { state.exam.index--; renderExam(); }
     });
     $('#btn-next').addEventListener('click', () => {
-      if (state.exam.index < state.exam.questions.length - 1) { state.exam.index++; renderExam(); }
+      const e = state.exam; if (!e) return;
+      if (e.index < e.questions.length - 1) {
+        e.index++;
+        renderExam();
+      } else {
+        finishExam(false);
+      }
     });
     $('#btn-finish').addEventListener('click', () => finishExam(false));
     $('#btn-cancel-exam').addEventListener('click', cancelExam);
@@ -752,7 +771,12 @@
       // Flag with F key during exam
       if (!$('#view-exam').hidden && state.exam) {
         if (e.key === 'ArrowRight') {
-          if (state.exam.index < state.exam.questions.length - 1) { state.exam.index++; renderExam(); }
+          if (state.exam.index < state.exam.questions.length - 1) {
+            state.exam.index++;
+            renderExam();
+          } else {
+            finishExam(false);
+          }
         } else if (e.key === 'ArrowLeft') {
           if (state.exam.index > 0) { state.exam.index--; renderExam(); }
         } else if (e.key === 'f' || e.key === 'F') {
