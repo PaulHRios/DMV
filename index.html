@@ -1,16 +1,18 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#0b2545" />
-  <meta name="description" content="Simulador de práctica del examen escrito para licencia de conducir estándar de Colorado." />
+  <meta name="theme-color" content="#0b2545" id="theme-color-meta" />
+  <meta name="description" content="Simulador de práctica del examen escrito para licencia de conducir estándar de Colorado, con imágenes de señales y modo estudio por categoría." />
   <title>Simulador del Examen de Manejo de Colorado</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:wght@600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./css/styles.css" />
+  <link rel="manifest" href="./manifest.webmanifest" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='14' fill='%230b2545'/%3E%3Ctext x='50' y='66' font-size='58' font-family='Georgia, serif' font-weight='700' text-anchor='middle' fill='%23ffffff'%3ECO%3C/text%3E%3C/svg%3E" />
+  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='14' fill='%230b2545'/%3E%3Ctext x='50' y='66' font-size='58' font-family='Georgia, serif' font-weight='700' text-anchor='middle' fill='%23ffffff'%3ECO%3C/text%3E%3C/svg%3E" />
 </head>
 <body>
   <a class="skip-link" href="#main">Saltar al contenido principal</a>
@@ -24,10 +26,19 @@
           <div class="brand-sub" data-i18n="brand.sub">Estado de Colorado · Práctica no oficial</div>
         </div>
       </div>
-      <nav class="lang-switch" aria-label="Idioma">
-        <button type="button" class="lang-btn" data-lang="es" aria-pressed="true">Español</button>
-        <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">English</button>
-      </nav>
+      <div class="header-tools">
+        <nav class="lang-switch" aria-label="Idioma">
+          <button type="button" class="lang-btn" data-lang="es" aria-pressed="true">ES</button>
+          <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+        </nav>
+        <button type="button" class="icon-btn" id="btn-theme" aria-label="Cambiar tema" title="Cambiar tema">
+          <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="currentColor"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/><line x1="4.5" y1="4.5" x2="6.5" y2="6.5"/><line x1="17.5" y1="17.5" x2="19.5" y2="19.5"/><line x1="4.5" y1="19.5" x2="6.5" y2="17.5"/><line x1="17.5" y1="6.5" x2="19.5" y2="4.5"/></g></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z" fill="currentColor"/></svg>
+        </button>
+        <button type="button" class="icon-btn" id="btn-settings" aria-label="Configuración" title="Configuración">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M19.14 12.94a7.49 7.49 0 0 0 .05-.94c0-.32-.02-.63-.06-.94l2.03-1.58a.49.49 0 0 0 .12-.62l-1.92-3.32a.5.5 0 0 0-.6-.22l-2.39.96a7.04 7.04 0 0 0-1.62-.94l-.36-2.54A.5.5 0 0 0 13.9 2h-3.84a.5.5 0 0 0-.5.42l-.36 2.54c-.59.24-1.14.56-1.62.94l-2.39-.96a.5.5 0 0 0-.6.22L2.67 8.48a.49.49 0 0 0 .12.62l2.03 1.58c-.04.31-.06.62-.06.94 0 .32.02.63.06.94L2.79 14.14a.5.5 0 0 0-.12.62l1.92 3.32c.13.22.39.31.6.22l2.39-.96c.48.38 1.03.7 1.62.94l.36 2.54c.05.24.27.42.5.42h3.84c.24 0 .45-.18.5-.42l.36-2.54c.59-.24 1.14-.56 1.62-.94l2.39.96c.21.09.47 0 .6-.22l1.92-3.32a.49.49 0 0 0-.12-.62l-2.03-1.58zM12 15.5A3.5 3.5 0 1 1 12 8.5a3.5 3.5 0 0 1 0 7z"/></svg>
+        </button>
+      </div>
     </div>
   </header>
 
@@ -86,20 +97,35 @@
         <div class="card">
           <h2 data-i18n="home.howTitle">Cómo funciona</h2>
           <ul class="check-list">
-            <li data-i18n="home.how1">Una pregunta por pantalla, con opciones de respuesta.</li>
+            <li data-i18n="home.how1">Una pregunta por pantalla con imagen cuando aplica.</li>
             <li data-i18n="home.how2">Puedes navegar entre preguntas antes de finalizar.</li>
-            <li data-i18n="home.how3">No se muestra la respuesta correcta durante el examen.</li>
-            <li data-i18n="home.how4">Al finalizar verás tu calificación y la revisión completa.</li>
+            <li data-i18n="home.how3">Marca preguntas con bandera para revisarlas al final.</li>
+            <li data-i18n="home.how4">Al finalizar verás tu calificación, desglose por tema y revisión.</li>
           </ul>
         </div>
         <div class="card">
-          <h2 data-i18n="home.tipsTitle">Recomendaciones</h2>
-          <ul class="check-list">
-            <li data-i18n="home.tips1">Lee la pregunta completa antes de elegir una opción.</li>
-            <li data-i18n="home.tips2">Si dudas, marca y avanza; vuelve al final.</li>
-            <li data-i18n="home.tips3">Practica varias veces: el banco es amplio.</li>
-            <li data-i18n="home.tips4">Revisa el modo estudio para reforzar temas débiles.</li>
-          </ul>
+          <h2 data-i18n="home.statsTitle">Tu progreso</h2>
+          <div id="stats-summary" class="stats-summary">
+            <div class="stat">
+              <div class="stat-value" id="stat-taken">0</div>
+              <div class="stat-label" data-i18n="home.statsTaken">Exámenes</div>
+            </div>
+            <div class="stat">
+              <div class="stat-value" id="stat-best">—</div>
+              <div class="stat-label" data-i18n="home.statsBest">Mejor</div>
+            </div>
+            <div class="stat">
+              <div class="stat-value" id="stat-avg">—</div>
+              <div class="stat-label" data-i18n="home.statsAvg">Promedio</div>
+            </div>
+            <div class="stat">
+              <div class="stat-value" id="stat-passrate">—</div>
+              <div class="stat-label" data-i18n="home.statsPassRate">Aprobados</div>
+            </div>
+          </div>
+          <div class="stats-actions">
+            <button type="button" class="btn btn-link" id="btn-clear-stats" data-i18n="home.statsClear">Borrar estadísticas</button>
+          </div>
         </div>
       </div>
     </section>
@@ -117,7 +143,13 @@
               <span id="exam-total">25</span>
             </h1>
           </div>
-          <div class="exam-timer" id="exam-timer" aria-live="polite">00:00</div>
+          <div class="exam-meta-right">
+            <button type="button" class="btn-flag" id="btn-flag" aria-pressed="false" title="Marcar para revisar">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3v18M5 4h12l-3 4 3 4H5" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></svg>
+              <span class="btn-flag-label" data-i18n="exam.flag">Marcar</span>
+            </button>
+            <div class="exam-timer" id="exam-timer" aria-live="polite">00:00</div>
+          </div>
         </header>
 
         <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
@@ -126,15 +158,25 @@
 
         <div class="question-block">
           <div class="category-tag" id="exam-category">—</div>
+          <div class="question-image" id="exam-image" hidden></div>
           <p class="question-text" id="exam-question">—</p>
           <div class="options" id="exam-options" role="radiogroup" aria-label="Opciones"></div>
         </div>
 
         <footer class="exam-footer">
-          <button type="button" class="btn btn-ghost" id="btn-prev" data-i18n="exam.prev">Anterior</button>
-          <div class="answer-grid" id="exam-grid" aria-label="Mapa de preguntas"></div>
-          <button type="button" class="btn btn-primary" id="btn-next" data-i18n="exam.next">Siguiente</button>
-          <button type="button" class="btn btn-success" id="btn-finish" data-i18n="exam.finish" hidden>Finalizar examen</button>
+          <div class="exam-footer-row">
+            <button type="button" class="btn btn-ghost" id="btn-prev" data-i18n="exam.prev">Anterior</button>
+            <button type="button" class="btn btn-primary" id="btn-next" data-i18n="exam.next">Siguiente</button>
+            <button type="button" class="btn btn-success" id="btn-finish" data-i18n="exam.finish" hidden>Finalizar examen</button>
+          </div>
+          <div class="answer-grid-wrap">
+            <div class="answer-grid-legend">
+              <span><span class="dot dot-current"></span> <span data-i18n="exam.legendCurrent">Actual</span></span>
+              <span><span class="dot dot-answered"></span> <span data-i18n="exam.legendAnswered">Respondida</span></span>
+              <span><span class="dot dot-flagged"></span> <span data-i18n="exam.legendFlagged">Marcada</span></span>
+            </div>
+            <div class="answer-grid" id="exam-grid" aria-label="Mapa de preguntas"></div>
+          </div>
         </footer>
       </div>
 
@@ -174,6 +216,18 @@
         </div>
       </div>
 
+      <div class="card" id="category-breakdown-card">
+        <h2 data-i18n="results.breakdownTitle">Desempeño por categoría</h2>
+        <div id="category-breakdown" class="category-breakdown"></div>
+      </div>
+
+      <div class="review-controls card subtle" id="review-controls" hidden>
+        <label class="check-line">
+          <input type="checkbox" id="review-only-wrong" />
+          <span data-i18n="results.onlyWrong">Mostrar solo respuestas incorrectas</span>
+        </label>
+      </div>
+
       <div class="review" id="review" hidden></div>
     </section>
 
@@ -205,6 +259,7 @@
           </div>
         </header>
 
+        <div class="question-image" id="study-image" hidden></div>
         <p class="question-text" id="study-question">—</p>
         <div class="options" id="study-options" role="radiogroup" aria-label="Opciones"></div>
 
@@ -224,6 +279,51 @@
 
   </main>
 
+  <!-- Settings dialog -->
+  <div class="modal" id="settings-modal" hidden role="dialog" aria-modal="true" aria-labelledby="settings-title">
+    <div class="modal-backdrop" data-close-modal="settings-modal"></div>
+    <div class="modal-content card">
+      <header class="modal-header">
+        <h2 id="settings-title" data-i18n="settings.title">Configuración</h2>
+        <button type="button" class="icon-btn" data-close-modal="settings-modal" aria-label="Cerrar">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6l-12 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" fill="none"/></svg>
+        </button>
+      </header>
+
+      <div class="setting-row">
+        <label for="setting-questions" data-i18n="settings.questions">Preguntas por examen</label>
+        <input type="number" id="setting-questions" min="5" max="50" step="1" value="25" />
+      </div>
+
+      <div class="setting-row">
+        <label for="setting-pass" data-i18n="settings.passing">Porcentaje mínimo para aprobar</label>
+        <div class="setting-input-suffix">
+          <input type="number" id="setting-pass" min="50" max="100" step="1" value="80" />
+          <span>%</span>
+        </div>
+      </div>
+
+      <div class="setting-row">
+        <label for="setting-timer" data-i18n="settings.timer">Mostrar cronómetro</label>
+        <input type="checkbox" id="setting-timer" checked />
+      </div>
+
+      <div class="setting-row">
+        <label for="setting-theme" data-i18n="settings.theme">Tema</label>
+        <select id="setting-theme">
+          <option value="auto" data-i18n="settings.themeAuto">Automático (sistema)</option>
+          <option value="light" data-i18n="settings.themeLight">Claro</option>
+          <option value="dark" data-i18n="settings.themeDark">Oscuro</option>
+        </select>
+      </div>
+
+      <footer class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="btn-settings-reset" data-i18n="settings.reset">Restablecer</button>
+        <button type="button" class="btn btn-primary" id="btn-settings-save" data-i18n="settings.save">Guardar</button>
+      </footer>
+    </div>
+  </div>
+
   <footer class="site-footer">
     <div class="container">
       <p data-i18n="footer.text">
@@ -233,8 +333,16 @@
     </div>
   </footer>
 
+  <script src="./js/icons.js"></script>
   <script src="./js/questions.js"></script>
   <script src="./js/i18n.js"></script>
   <script src="./js/app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('./sw.js').catch(function () {});
+      });
+    }
+  </script>
 </body>
 </html>

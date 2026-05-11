@@ -2,29 +2,51 @@
 
 Aplicación web estática que simula el examen escrito para la licencia de
 conducir estándar del estado de Colorado. Está pensada como herramienta de
-estudio: presenta preguntas reales basadas en el [Manual del Conductor de
-Colorado (DR 2337)](https://dmv.colorado.gov/sites/dmv/files/documents/DR_2337SP_Jan2025_Spanish.pdf)
-y muestra una calificación al final con la revisión de cada respuesta.
+estudio realista: presenta preguntas basadas en el [Manual del Conductor
+de Colorado (DR 2337)](https://dmv.colorado.gov/sites/dmv/files/documents/DR_2337SP_Jan2025_Spanish.pdf)
+con **imágenes inline de señales reales**, mide el tiempo, marca preguntas
+para revisar y muestra calificación, desglose por categoría y revisión
+completa al terminar.
 
 **Aviso:** Este es un proyecto educativo independiente. **No** es un examen
 oficial del DMV ni está afiliado al gobierno del estado de Colorado.
 
 ## Características
 
-- 100% estático (HTML, CSS y JavaScript vanilla). No necesita backend ni
-  dependencias de Node.
-- 190 preguntas bilingües (español / inglés) cubriendo señales, semáforos,
-  derecho de paso, velocidad, distancia, DUI/DWAI, peatones y ciclistas,
-  buses escolares, manejo en invierno, autopistas, estacionamiento, luces,
-  adelantamiento, emergencias, documentos/seguro, reglas generales y
-  rotondas.
-- Cada examen toma 25 preguntas aleatorias **sin repetir** y mezcla el orden
-  de las opciones para evitar memorización.
-- Modo "Estudiar por categoría" con explicación inmediata.
-- Selector de idioma español / inglés (inicia en español).
-- Diseño responsivo (iPhone, iPad, escritorio).
-- Despliegue automático a GitHub Pages mediante GitHub Actions desde la
-  rama `main`.
+- **100% estático** (HTML, CSS y JavaScript vanilla). Sin backend, sin
+  build, sin dependencias de Node.
+- **Banco de 190 preguntas** bilingües (español / inglés) cubriendo
+  señales, semáforos, derecho de paso, velocidad, distancia, DUI/DWAI,
+  peatones y ciclistas, buses escolares, manejo en invierno, autopistas,
+  estacionamiento, luces, adelantamiento, emergencias, documentos/seguro,
+  reglas generales y rotondas.
+- **Imágenes inline (SVG)** para ~47 preguntas con señales, marcas viales,
+  semáforos, señales manuales del brazo y estacionamiento en pendiente.
+  Las ilustraciones viven en `js/icons.js` y se generan localmente — sin
+  CDN ni imágenes externas.
+- **Examen aleatorio** de 25 preguntas sin repetir, con orden de opciones
+  mezclado en cada intento.
+- **Banderín por pregunta** para marcarla y revisarla luego (tecla `F`).
+- **Mapa de preguntas** con leyenda (actual, respondida, marcada).
+- **Cronómetro** opcional.
+- **Resultados detallados**: porcentaje, aprobado/no aprobado,
+  conteo de aciertos, tiempo total, **desglose por categoría con
+  barras de color**, revisión completa con filtro "Solo incorrectas".
+- **Modo estudio por categoría** con explicación inmediata.
+- **Tema claro / oscuro** con detección automática del sistema, toggle
+  rápido y selector en configuración.
+- **Panel de configuración** para cambiar # de preguntas, % de aprobación,
+  cronómetro y tema. Persiste en `localStorage`.
+- **Estadísticas locales**: exámenes hechos, mejor puntuación, promedio,
+  porcentaje de aprobación. Se pueden borrar.
+- **Selector de idioma** español / inglés (inicia en español).
+- **PWA**: `manifest.webmanifest` + service worker → instalable y funciona
+  sin conexión después de la primera carga.
+- **Responsivo** (iPhone, iPad, escritorio) con accesibilidad cuidada:
+  navegación con teclado (←/→ navegar, 1-4 elegir, `F` marcar, `Esc`
+  cerrar modal), `aria-pressed`, focus visible, `prefers-reduced-motion`.
+- **Despliegue automático** a GitHub Pages mediante GitHub Actions desde
+  la rama `main`.
 
 ## Cómo correrlo localmente
 
@@ -44,26 +66,29 @@ Y abrir `http://localhost:8000` en el navegador.
 
 ```
 .
-├── index.html              # Estructura HTML de todas las vistas
-├── css/styles.css          # Estilos
+├── index.html                  # Estructura HTML de todas las vistas
+├── css/styles.css              # Estilos con temas claro/oscuro
 ├── js/
-│   ├── questions.js        # Banco de preguntas (bilingüe)
-│   ├── i18n.js             # Textos de interfaz ES/EN
-│   └── app.js              # Lógica del examen y modo estudio
+│   ├── icons.js                # Biblioteca de SVG inline (señales, etc.)
+│   ├── questions.js            # Banco de preguntas (bilingüe + image keys)
+│   ├── i18n.js                 # Textos de interfaz ES/EN
+│   └── app.js                  # Lógica completa
+├── manifest.webmanifest        # Manifiesto PWA
+├── sw.js                       # Service worker (cache-first)
 ├── .github/workflows/
-│   └── deploy.yml          # Workflow de despliegue a GitHub Pages
-└── .nojekyll               # Evita procesamiento Jekyll en Pages
+│   └── deploy.yml              # Workflow de despliegue a GitHub Pages
+└── .nojekyll                   # Evita procesamiento Jekyll en Pages
 ```
 
 ## Cómo agregar más preguntas
 
-Edita `js/questions.js` y añade un objeto al arreglo `window.QUESTIONS`. Cada
-pregunta debe tener este formato:
+Edita `js/questions.js` y añade un objeto al arreglo `window.QUESTIONS`:
 
 ```js
 {
-  id: 191,                          // ID único, entero
-  category: 'signs',                // ver lista de categorías más abajo
+  id: 191,                              // ID único, entero
+  category: 'signs',                    // ver lista de categorías abajo
+  image: 'sign.stop',                   // opcional, ver iconos disponibles
   question: {
     es: '¿Pregunta en español?',
     en: 'Question in English?'
@@ -74,10 +99,10 @@ pregunta debe tener este formato:
     { es: 'Opción C', en: 'Option C' },
     { es: 'Opción D', en: 'Option D' }
   ],
-  correctAnswer: 1,                 // índice 0-based de la respuesta correcta
+  correctAnswer: 1,                     // índice 0-based
   explanation: {
-    es: 'Explicación breve en español.',
-    en: 'Short explanation in English.'
+    es: 'Explicación breve.',
+    en: 'Short explanation.'
   },
   sourceReference: {
     es: 'Manual del Conductor de Colorado · sección',
@@ -86,52 +111,83 @@ pregunta debe tener este formato:
 }
 ```
 
-Categorías disponibles (deben coincidir con `window.QUESTION_CATEGORIES` en
-el mismo archivo y con las claves `cat.<nombre>` en `js/i18n.js`):
-
+**Categorías disponibles** (`window.QUESTION_CATEGORIES` en
+`js/questions.js`, traducciones `cat.<nombre>` en `js/i18n.js`):
 `signs`, `signals`, `rightOfWay`, `speed`, `following`, `alcohol`,
 `pedestrians`, `schoolBus`, `winter`, `highway`, `parking`, `lights`,
 `passing`, `emergency`, `documents`, `general`, `roundabout`.
 
-Si quieres una **nueva categoría**, agrégala al arreglo
-`window.QUESTION_CATEGORIES` y crea las traducciones `cat.miNuevaCategoria`
-para `es` y `en` en `js/i18n.js`.
+## Cómo agregar una nueva imagen / icono
 
-## Cómo cambiar la cantidad de preguntas y el porcentaje mínimo para aprobar
+Edita `js/icons.js` y añade una entrada al objeto `ICONS` con una clave en
+formato `categoria.nombre`. La función helper `s(content, opts)` envuelve
+tu SVG en un `<svg>` con `viewBox` y `aria-hidden`. Después referencia la
+clave desde el campo `image` de una pregunta.
 
-Edita `js/app.js`, al inicio del archivo:
+Iconos ya disponibles:
+
+- **Señales**: `sign.stop`, `sign.yield`, `sign.doNotEnter`,
+  `sign.wrongWay`, `sign.keepRight`, `sign.oneWay`, `sign.noPassing`,
+  `sign.noTurn`, `sign.warningBlank`, `sign.slippery`, `sign.twoWay`,
+  `sign.deer`, `sign.merge`, `sign.curve`, `sign.tIntersection`,
+  `sign.construction`, `sign.school`, `sign.railroad`, `sign.service`,
+  `sign.recreation`, `sign.guide`
+- **Semáforos**: `signal.red`, `signal.yellow`, `signal.green`,
+  `signal.flashingRed`, `signal.flashingYellow`, `signal.greenArrow`,
+  `signal.flashingYellowArrow`, `signal.laneGreenArrow`,
+  `signal.laneRedX`
+- **Marcas viales**: `lane.solidYellow`, `lane.doubleYellow`,
+  `lane.brokenYellow`, `lane.solidWhite`, `lane.brokenWhite`,
+  `lane.twoWayLeft`
+- **Señales manuales**: `hand.left`, `hand.right`, `hand.stop`
+- **Estacionamiento**: `park.uphillCurb`, `park.downhillCurb`,
+  `park.noCurb`
+- **Otros**: `inter.fourWay`
+
+## Cómo cambiar la cantidad de preguntas y el porcentaje de aprobación
+
+Dos opciones:
+
+1. **Desde la app**: ícono de engranaje (esquina superior derecha) → ajusta
+   *Preguntas por examen* y *Porcentaje mínimo para aprobar*. Se guarda en
+   `localStorage` y aplica inmediatamente.
+2. **Por código**: edita los valores `DEFAULTS` al inicio de `js/app.js`:
 
 ```js
-const CONFIG = {
-  QUESTIONS_PER_EXAM: 25,   // número de preguntas que tomará cada examen
-  PASSING_PERCENT: 80,      // porcentaje mínimo para aprobar
+const DEFAULTS = {
+  QUESTIONS_PER_EXAM: 25,
+  PASSING_PERCENT: 80,
+  SHOW_TIMER: true,
+  THEME: 'auto',
 };
 ```
-
-Cambia esos valores y guarda. El indicador del home y la lógica de
-aprobación se actualizan automáticamente.
 
 ## Despliegue a GitHub Pages
 
 El workflow `.github/workflows/deploy.yml` publica automáticamente el sitio
 en GitHub Pages cada vez que se hace push a `main`.
 
-Para activarlo en tu repositorio:
+Para activarlo:
 
-1. Ve a **Settings → Pages**.
-2. En "Build and deployment" → "Source" elige **GitHub Actions**.
-3. Haz push a `main` (o ejecuta el workflow manualmente desde la pestaña
-   Actions).
-4. La URL pública aparecerá en la pestaña Actions tras finalizar el deploy
-   y también en Settings → Pages.
+1. **Settings → Pages**.
+2. En *Build and deployment → Source* elige **GitHub Actions**.
+3. Haz push a `main` (o ejecuta el workflow desde Actions).
+4. La URL pública aparecerá en Actions y en Settings → Pages.
 
-No hay que configurar nada más: el workflow sube la carpeta raíz tal cual
-(archivos estáticos).
+## Atajos de teclado
 
-## Notas de privacidad
+| Tecla | Acción |
+|---|---|
+| ← / → | Pregunta anterior / siguiente |
+| 1 – 4 | Elegir opción A, B, C o D |
+| F | Marcar / desmarcar pregunta con bandera |
+| Esc | Cerrar modal de configuración |
 
-La app guarda únicamente el idioma seleccionado en `localStorage`
-(`dmv.lang`). No envía datos a ningún servidor ni usa cookies.
+## Privacidad
+
+La app solo guarda en `localStorage` del navegador:
+`dmv.lang` (idioma), `dmv.settings` (configuración) y `dmv.stats`
+(historial de exámenes). No envía datos a ningún servidor ni usa cookies.
 
 ## Licencia
 

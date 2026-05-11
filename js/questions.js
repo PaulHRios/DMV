@@ -20,6 +20,7 @@ window.QUESTIONS = [
   /* ===== SEÑALES DE TRÁNSITO ===== */
   {
     id: 1, category: 'signs',
+    image: 'sign.stop',
     question: {
       es: '¿Qué forma tiene exclusivamente una señal de "PARE" (STOP)?',
       en: 'What shape is exclusively used for a STOP sign?'
@@ -42,6 +43,7 @@ window.QUESTIONS = [
   },
   {
     id: 2, category: 'signs',
+    image: 'sign.yield',
     question: {
       es: 'Una señal triangular invertida (punta hacia abajo) significa:',
       en: 'A downward-pointing triangle sign means:'
@@ -64,6 +66,7 @@ window.QUESTIONS = [
   },
   {
     id: 3, category: 'signs',
+    image: 'sign.warningBlank',
     question: {
       es: 'Las señales en forma de diamante (rombo) generalmente son de color amarillo y sirven para:',
       en: 'Diamond-shaped signs are usually yellow and are used to:'
@@ -86,6 +89,7 @@ window.QUESTIONS = [
   },
   {
     id: 4, category: 'signs',
+    image: 'sign.construction',
     question: {
       es: 'El color naranja en una señal de tránsito generalmente indica:',
       en: 'The color orange on a traffic sign generally indicates:'
@@ -108,6 +112,7 @@ window.QUESTIONS = [
   },
   {
     id: 5, category: 'signs',
+    image: 'sign.service',
     question: {
       es: 'Una señal azul rectangular usualmente indica:',
       en: 'A blue rectangular sign usually indicates:'
@@ -130,6 +135,7 @@ window.QUESTIONS = [
   },
   {
     id: 6, category: 'signs',
+    image: 'sign.recreation',
     question: {
       es: 'Una señal marrón generalmente indica:',
       en: 'A brown sign generally indicates:'
@@ -152,6 +158,7 @@ window.QUESTIONS = [
   },
   {
     id: 7, category: 'signs',
+    image: 'sign.school',
     question: {
       es: 'Una señal pentagonal (cinco lados, punta hacia arriba) de color amarillo o amarillo-verde fluorescente significa:',
       en: 'A five-sided pentagonal sign (point up) in yellow or fluorescent yellow-green means:'
@@ -174,6 +181,7 @@ window.QUESTIONS = [
   },
   {
     id: 8, category: 'signs',
+    image: 'sign.railroad',
     question: {
       es: 'Una señal redonda amarilla con una "X" negra y las letras "RR" indica:',
       en: 'A round yellow sign with a black "X" and letters "RR" indicates:'
@@ -196,6 +204,7 @@ window.QUESTIONS = [
   },
   {
     id: 9, category: 'signs',
+    image: 'sign.noPassing',
     question: {
       es: 'Una señal vertical, rectangular y con forma de pendón horizontal a la izquierda del camino significa:',
       en: 'A pennant-shaped sign on the left side of the road means:'
@@ -240,6 +249,7 @@ window.QUESTIONS = [
   },
   {
     id: 11, category: 'signs',
+    image: 'sign.noTurn',
     question: {
       es: 'Una señal redonda blanca con un círculo rojo y una línea roja diagonal indica:',
       en: 'A white round sign with a red circle and red diagonal line indicates:'
@@ -284,6 +294,7 @@ window.QUESTIONS = [
   },
   {
     id: 13, category: 'signs',
+    image: 'sign.doNotEnter',
     question: {
       es: 'Si encuentra una señal "DO NOT ENTER" / "NO ENTRE" debe:',
       en: 'If you encounter a "DO NOT ENTER" sign you must:'
@@ -306,6 +317,7 @@ window.QUESTIONS = [
   },
   {
     id: 14, category: 'signs',
+    image: 'sign.deer',
     question: {
       es: 'Una señal amarilla que muestra la silueta de un ciervo significa:',
       en: 'A yellow sign showing the silhouette of a deer means:'
@@ -328,6 +340,7 @@ window.QUESTIONS = [
   },
   {
     id: 15, category: 'signs',
+    image: 'sign.curve',
     question: {
       es: 'Una flecha amarilla curva con un número (por ejemplo "35") debajo significa:',
       en: 'A yellow curved arrow with a number (e.g., "35") below it means:'
@@ -350,6 +363,7 @@ window.QUESTIONS = [
   },
   {
     id: 16, category: 'signs',
+    image: 'sign.wrongWay',
     question: {
       es: 'Una señal de "WRONG WAY" / "VÍA EQUIVOCADA" significa que usted:',
       en: 'A "WRONG WAY" sign means you are:'
@@ -372,6 +386,7 @@ window.QUESTIONS = [
   },
   {
     id: 17, category: 'signs',
+    image: 'sign.guide',
     question: {
       es: 'Las señales de color verde se usan principalmente para:',
       en: 'Green-colored signs are mainly used to:'
@@ -394,6 +409,7 @@ window.QUESTIONS = [
   },
   {
     id: 18, category: 'signs',
+    image: 'sign.twoWay',
     question: {
       es: 'Una señal cuadrada amarilla con dos flechas en sentido contrario indica:',
       en: 'A yellow square sign with two arrows pointing in opposite directions means:'
@@ -416,6 +432,7 @@ window.QUESTIONS = [
   },
   {
     id: 19, category: 'signs',
+    image: 'sign.slippery',
     question: {
       es: 'Una señal amarilla con dos flechas verticales (arriba y abajo) en una flecha doble curva significa:',
       en: 'A yellow sign showing one wavy arrow indicates:'
@@ -438,6 +455,7 @@ window.QUESTIONS = [
   },
   {
     id: 20, category: 'signs',
+    image: 'signal.laneGreenArrow',
     question: {
       es: 'En Colorado, una señal de carril reversible con una flecha verde encima del carril significa:',
       en: 'A reversible-lane signal with a green arrow above the lane means:'
@@ -460,6 +478,7 @@ window.QUESTIONS = [
   },
   {
     id: 21, category: 'signs',
+    image: 'signal.laneRedX',
     question: {
       es: 'Una "X" roja sobre un carril significa:',
       en: 'A red "X" over a lane means:'
@@ -482,6 +501,7 @@ window.QUESTIONS = [
   },
   {
     id: 22, category: 'signs',
+    image: 'sign.stop',
     question: {
       es: 'Si llega a una señal de "PARE" sin línea de alto pintada, debe detenerse:',
       en: 'If you reach a STOP sign with no painted stop line, you must stop:'
@@ -504,6 +524,7 @@ window.QUESTIONS = [
   },
   {
     id: 23, category: 'signs',
+    image: 'sign.school',
     question: {
       es: 'Las señales de color amarillo verde fluorescente se usan principalmente para:',
       en: 'Fluorescent yellow-green signs are mainly used for:'
@@ -526,6 +547,7 @@ window.QUESTIONS = [
   },
   {
     id: 24, category: 'signs',
+    image: 'sign.keepRight',
     question: {
       es: 'Una señal cuadrada blanca que dice "KEEP RIGHT" significa:',
       en: 'A white square sign that says "KEEP RIGHT" means:'
@@ -572,6 +594,7 @@ window.QUESTIONS = [
   /* ===== SEMÁFOROS Y MARCAS VIALES ===== */
   {
     id: 26, category: 'signals',
+    image: 'signal.red',
     question: {
       es: 'Una luz roja fija en un semáforo significa:',
       en: 'A steady red traffic light means:'
@@ -591,6 +614,7 @@ window.QUESTIONS = [
   },
   {
     id: 27, category: 'signals',
+    image: 'signal.yellow',
     question: {
       es: 'Una luz amarilla fija significa:',
       en: 'A steady yellow light means:'
@@ -610,6 +634,7 @@ window.QUESTIONS = [
   },
   {
     id: 28, category: 'signals',
+    image: 'signal.flashingRed',
     question: {
       es: 'Una luz roja intermitente equivale a:',
       en: 'A flashing red light is equivalent to:'
@@ -629,6 +654,7 @@ window.QUESTIONS = [
   },
   {
     id: 29, category: 'signals',
+    image: 'signal.flashingYellow',
     question: {
       es: 'Una luz amarilla intermitente significa:',
       en: 'A flashing yellow light means:'
@@ -648,6 +674,7 @@ window.QUESTIONS = [
   },
   {
     id: 30, category: 'signals',
+    image: 'signal.greenArrow',
     question: {
       es: 'Una flecha verde fija indica:',
       en: 'A steady green arrow means:'
@@ -667,6 +694,7 @@ window.QUESTIONS = [
   },
   {
     id: 31, category: 'signals',
+    image: 'lane.solidYellow',
     question: {
       es: 'Una línea amarilla sólida en su lado del camino significa:',
       en: 'A solid yellow line on your side of the road means:'
@@ -686,6 +714,7 @@ window.QUESTIONS = [
   },
   {
     id: 32, category: 'signals',
+    image: 'lane.brokenWhite',
     question: {
       es: 'Una línea blanca discontinua entre carriles significa:',
       en: 'A broken white line between lanes means:'
@@ -705,6 +734,7 @@ window.QUESTIONS = [
   },
   {
     id: 33, category: 'signals',
+    image: 'lane.solidWhite',
     question: {
       es: 'Una línea blanca sólida entre carriles indica:',
       en: 'A solid white line between lanes indicates:'
@@ -724,6 +754,7 @@ window.QUESTIONS = [
   },
   {
     id: 34, category: 'signals',
+    image: 'lane.doubleYellow',
     question: {
       es: 'Dos líneas amarillas sólidas (doble línea amarilla) significan:',
       en: 'A double solid yellow line means:'
@@ -743,6 +774,7 @@ window.QUESTIONS = [
   },
   {
     id: 35, category: 'signals',
+    image: 'inter.fourWay',
     question: {
       es: 'Si su semáforo está apagado por completo (no funciona), debe:',
       en: 'If a traffic signal is completely dark (out), you should:'
@@ -762,6 +794,7 @@ window.QUESTIONS = [
   },
   {
     id: 36, category: 'signals',
+    image: 'signal.flashingYellowArrow',
     question: {
       es: 'Una flecha amarilla intermitente en un semáforo de giro significa:',
       en: 'A flashing yellow arrow at a turn signal means:'
@@ -781,6 +814,7 @@ window.QUESTIONS = [
   },
   {
     id: 37, category: 'signals',
+    image: 'lane.brokenYellow',
     question: {
       es: 'Una línea amarilla discontinua a su lado del camino significa:',
       en: 'A broken yellow line on your side of the road means:'
@@ -800,6 +834,7 @@ window.QUESTIONS = [
   },
   {
     id: 38, category: 'signals',
+    image: 'inter.fourWay',
     question: {
       es: 'En una intersección, si tiene luz verde pero hay vehículos atravesados que no le permiten pasar, debe:',
       en: 'At an intersection with a green light but blocked by other vehicles, you must:'
@@ -838,6 +873,7 @@ window.QUESTIONS = [
   },
   {
     id: 40, category: 'signals',
+    image: 'signal.green',
     question: {
       es: 'Si la luz verde acaba de cambiar y va a cruzar la intersección, debe:',
       en: 'If the light just turned green and you are about to cross the intersection, you should:'
@@ -859,6 +895,7 @@ window.QUESTIONS = [
   /* ===== DERECHO DE PASO E INTERSECCIONES ===== */
   {
     id: 41, category: 'rightOfWay',
+    image: 'inter.fourWay',
     question: {
       es: 'En una intersección con señal de PARE en los cuatro sentidos (4-way stop), si dos vehículos llegan al mismo tiempo:',
       en: 'At a four-way stop, when two vehicles arrive at the same time:'
@@ -2319,6 +2356,7 @@ window.QUESTIONS = [
   },
   {
     id: 117, category: 'parking',
+    image: 'park.downhillCurb',
     question: {
       es: 'Al estacionar en una pendiente cuesta abajo con la banqueta, las ruedas delanteras deben quedar:',
       en: 'When parking downhill next to a curb, the front wheels must be turned:'
@@ -2338,6 +2376,7 @@ window.QUESTIONS = [
   },
   {
     id: 118, category: 'parking',
+    image: 'park.uphillCurb',
     question: {
       es: 'Al estacionar cuesta arriba con banqueta, las ruedas delanteras deben quedar:',
       en: 'When parking uphill next to a curb, the front wheels must be turned:'
@@ -2357,6 +2396,7 @@ window.QUESTIONS = [
   },
   {
     id: 119, category: 'parking',
+    image: 'park.noCurb',
     question: {
       es: 'Al estacionar en una pendiente sin banqueta (cuesta arriba o cuesta abajo), las ruedas deben quedar:',
       en: 'When parking on a hill with no curb (uphill or downhill), the wheels should be turned:'
@@ -3032,6 +3072,7 @@ window.QUESTIONS = [
   },
   {
     id: 154, category: 'general',
+    image: 'hand.left',
     question: {
       es: 'La señal manual para "giro a la izquierda" es:',
       en: 'The hand signal for a left turn is:'
@@ -3051,6 +3092,7 @@ window.QUESTIONS = [
   },
   {
     id: 155, category: 'general',
+    image: 'hand.right',
     question: {
       es: 'La señal manual para "giro a la derecha" es:',
       en: 'The hand signal for a right turn is:'
@@ -3070,6 +3112,7 @@ window.QUESTIONS = [
   },
   {
     id: 156, category: 'general',
+    image: 'hand.stop',
     question: {
       es: 'La señal manual para indicar que va a parar o reducir es:',
       en: 'The hand signal for stopping or slowing is:'
@@ -3302,6 +3345,7 @@ window.QUESTIONS = [
   },
   {
     id: 168, category: 'rightOfWay',
+    image: 'sign.railroad',
     question: {
       es: 'Cuando llega a un cruce ferroviario con barreras bajas y luces parpadeando:',
       en: 'When you reach a railroad crossing with the gates down and lights flashing:'
@@ -3321,6 +3365,7 @@ window.QUESTIONS = [
   },
   {
     id: 169, category: 'signs',
+    image: 'sign.school',
     question: {
       es: 'Una señal con la imagen de un camión escolar y el texto "SCHOOL BUS STOP AHEAD" indica:',
       en: 'A sign showing a school bus and the text "SCHOOL BUS STOP AHEAD" indicates:'
@@ -3492,6 +3537,7 @@ window.QUESTIONS = [
   },
   {
     id: 178, category: 'signs',
+    image: 'sign.merge',
     question: {
       es: 'Una señal de "MERGE" / "INCORPORACIÓN" significa:',
       en: 'A "MERGE" sign means:'
@@ -3682,6 +3728,7 @@ window.QUESTIONS = [
   },
   {
     id: 188, category: 'signals',
+    image: 'lane.twoWayLeft',
     question: {
       es: 'Un carril central de tres flechas (carril de dos sentidos para giro a la izquierda) sirve para:',
       en: 'A center lane marked with arrows from both directions (two-way left-turn lane) is used to:'
