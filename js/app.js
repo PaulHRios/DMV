@@ -824,6 +824,10 @@
     applyConfigToHome();
     renderStats();
     bindEvents();
+    // Defensa: asegurarse de que el modal de configuración inicie cerrado
+    // aunque cualquier CSS legado intente mostrarlo.
+    const sm = document.getElementById('settings-modal');
+    if (sm) sm.hidden = true;
     showView('view-home');
   }
 

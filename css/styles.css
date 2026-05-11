@@ -970,8 +970,14 @@ h2 { font-size: 20px; margin: 0 0 12px; }
 
 /* ---------- Modal ---------- */
 
-.modal {
+/* Por defecto el modal está oculto: solo se muestra cuando NO tiene el
+   atributo `hidden`. Este patrón evita que reglas posteriores con
+   `display: flex` lo vuelvan visible si el atributo no fue removido. */
+.modal { display: none; }
+
+.modal:not([hidden]) {
   position: fixed; inset: 0;
+  top: 0; right: 0; bottom: 0; left: 0; /* fallback para iOS antiguo */
   z-index: 200;
   display: flex;
   align-items: center;
@@ -980,12 +986,15 @@ h2 { font-size: 20px; margin: 0 0 12px; }
 }
 .modal-backdrop {
   position: absolute; inset: 0;
+  top: 0; right: 0; bottom: 0; left: 0;
   background: rgba(11, 21, 37, 0.6);
   -webkit-backdrop-filter: blur(2px);
   backdrop-filter: blur(2px);
+  z-index: 1;
 }
 .modal-content {
   position: relative;
+  z-index: 2;
   max-width: 460px;
   width: 100%;
   margin: 0;

@@ -1,7 +1,9 @@
-/* Service Worker — cache-first para los assets estáticos.
-   Permite usar la app sin conexión una vez visitada. */
+/* Service Worker — network-first.
+   Servir siempre la versión más reciente cuando hay red, y caer al
+   caché solo si la red falla. Esto evita servir CSS/JS viejos cuando
+   se publica un fix. */
 
-const CACHE = 'dmv-co-v2';
+const CACHE = 'dmv-co-v4';
 const ASSETS = [
   './',
   './index.html',
@@ -30,26 +32,23 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   const req = event.request;
   if (req.method !== 'GET') return;
-  // Solo manejamos same-origin (las fuentes de Google se gestionan por el navegador)
   const url = new URL(req.url);
   if (url.origin !== self.location.origin) return;
 
+  // Network-first con fallback a cache.
   event.respondWith(
-    caches.match(req).then((cached) => {
-      if (cached) {
-        // Refresca en segundo plano
-        fetch(req).then((res) => {
-          if (res && res.ok) caches.open(CACHE).then((c) => c.put(req, res));
-        }).catch(() => {});
-        return cached;
+    fetch(req).then((res) => {
+      // Guardar copia en cache para uso offline.
+      if (res && res.ok) {
+        const copy = res.clone();
+        caches.open(CACHE).then((c) => c.put(req, copy));
       }
-      return fetch(req).then((res) => {
-        if (res && res.ok) {
-          const copy = res.clone();
-          caches.open(CACHE).then((c) => c.put(req, copy));
-        }
-        return res;
-      }).catch(() => caches.match('./index.html'));
-    })
+      return res;
+    }).catch(() => caches.match(req).then((cached) => cached || caches.match('./index.html')))
   );
+});
+
+// Permite que la página pida un skipWaiting si necesita activar el SW nuevo.
+self.addEventListener('message', (event) => {
+  if (event.data === 'skipWaiting') self.skipWaiting();
 });
