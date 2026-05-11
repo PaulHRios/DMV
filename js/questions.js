@@ -1086,6 +1086,7 @@ window.QUESTIONS = [
   },
   {
     id: 51, category: 'rightOfWay',
+    image: 'vehicle.schoolBusWithStop',
     question: {
       es: 'Cuando un autobús escolar enciende sus luces rojas intermitentes y extiende el brazo de PARE en una calle de dos sentidos, usted debe:',
       en: 'When a school bus shows flashing red lights and extends its STOP arm on a two-way road, you must:'
@@ -1183,6 +1184,7 @@ window.QUESTIONS = [
   /* ===== LÍMITES DE VELOCIDAD ===== */
   {
     id: 56, category: 'speed',
+    image: 'sign.speedLimit',
     question: {
       es: 'En Colorado, ¿cuál es el límite de velocidad por defecto en una zona residencial sin señalamiento?',
       en: 'In Colorado, what is the default speed limit in a residential area without posted signs?'
@@ -1989,6 +1991,7 @@ window.QUESTIONS = [
   },
   {
     id: 98, category: 'schoolBus',
+    image: 'vehicle.schoolBusWithStop',
     question: {
       es: 'Cuando se detiene detrás de un autobús escolar con luces rojas intermitentes, debe permanecer detenido hasta que:',
       en: 'When stopped behind a school bus with red lights flashing, you must remain stopped until:'
@@ -2027,6 +2030,7 @@ window.QUESTIONS = [
   },
   {
     id: 100, category: 'schoolBus',
+    image: 'vehicle.schoolBusWithStop',
     question: {
       es: 'Pasar un autobús escolar detenido con luces rojas intermitentes puede resultar en:',
       en: 'Passing a stopped school bus with flashing red lights may result in:'
@@ -3827,6 +3831,7 @@ window.QUESTIONS = [
   },
   {
     id: 193, category: 'rightOfWay',
+    image: 'vehicle.lightRail',
     question: {
       es: 'Al cruzar las vías del tren ligero (light rail) de RTD en Colorado, debe recordar que:',
       en: 'When crossing RTD light rail tracks in Colorado, you should remember that:'
@@ -3865,6 +3870,7 @@ window.QUESTIONS = [
   },
   {
     id: 195, category: 'general',
+    image: 'sign.slowVehicleTriangle',
     question: {
       es: 'Un triángulo naranja reflectante en la parte trasera de un vehículo indica:',
       en: 'A reflective orange triangle on the back of a vehicle indicates:'
@@ -3941,6 +3947,7 @@ window.QUESTIONS = [
   },
   {
     id: 199, category: 'winter',
+    image: 'vehicle.snowPlow',
     question: {
       es: 'Al compartir el camino con una máquina quitanieves (snow plow) en Colorado, debe:',
       en: 'When sharing the road with a snow plow in Colorado, you should:'
@@ -3998,6 +4005,7 @@ window.QUESTIONS = [
   },
   {
     id: 202, category: 'pedestrians',
+    image: 'signal.pedHand',
     question: {
       es: 'En un semáforo peatonal, una mano blanca que parpadea (o "DON\'T WALK" intermitente) significa:',
       en: 'At a pedestrian signal, a flashing white hand (or flashing "DON\'T WALK") means:'
