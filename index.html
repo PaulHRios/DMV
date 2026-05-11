@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b2545" />
+  <meta name="description" content="Simulador de práctica del examen escrito para licencia de conducir estándar de Colorado." />
+  <title>Simulador del Examen de Manejo de Colorado</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./css/styles.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='14' fill='%230b2545'/%3E%3Ctext x='50' y='66' font-size='58' font-family='Georgia, serif' font-weight='700' text-anchor='middle' fill='%23ffffff'%3ECO%3C/text%3E%3C/svg%3E" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Saltar al contenido principal</a>
+
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">CO</div>
+        <div class="brand-text">
+          <div class="brand-title" data-i18n="brand.title">Simulador del Examen de Manejo</div>
+          <div class="brand-sub" data-i18n="brand.sub">Estado de Colorado · Práctica no oficial</div>
+        </div>
+      </div>
+      <nav class="lang-switch" aria-label="Idioma">
+        <button type="button" class="lang-btn" data-lang="es" aria-pressed="true">Español</button>
+        <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">English</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="container" tabindex="-1">
+
+    <!-- HOME -->
+    <section id="view-home" class="view view-active" aria-labelledby="home-title">
+      <div class="card hero">
+        <div class="badge" data-i18n="home.badge">Examen de práctica</div>
+        <h1 id="home-title" data-i18n="home.title">Simulador del Examen de Manejo de Colorado</h1>
+        <p class="lede" data-i18n="home.lede">
+          Una práctica realista del examen escrito para la licencia de conducir
+          estándar del estado de Colorado. Las preguntas están basadas en el
+          Manual del Conductor oficial.
+        </p>
+
+        <div class="notice" role="note">
+          <strong data-i18n="home.noticeStrong">Aviso:</strong>
+          <span data-i18n="home.noticeText">
+            Este es un simulador educativo independiente. No es un examen oficial
+            del DMV ni está afiliado al gobierno del estado de Colorado.
+          </span>
+        </div>
+
+        <div class="exam-meta">
+          <div class="meta-item">
+            <span class="meta-label" data-i18n="home.metaQuestions">Preguntas</span>
+            <span class="meta-value" id="meta-questions">25</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label" data-i18n="home.metaPass">Aprobación</span>
+            <span class="meta-value" id="meta-pass">80%</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label" data-i18n="home.metaBank">Banco</span>
+            <span class="meta-value" id="meta-bank">—</span>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button type="button" class="btn btn-primary btn-lg" id="btn-start-exam" data-i18n="home.start">
+            Iniciar examen
+          </button>
+          <button type="button" class="btn btn-secondary btn-lg" id="btn-study-mode" data-i18n="home.study">
+            Modo estudio por categoría
+          </button>
+        </div>
+
+        <p class="footnote" data-i18n="home.footnote">
+          Cada examen genera 25 preguntas aleatorias del banco. Para aprobar el
+          examen real del DMV de Colorado se requiere un mínimo del 80%.
+        </p>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h2 data-i18n="home.howTitle">Cómo funciona</h2>
+          <ul class="check-list">
+            <li data-i18n="home.how1">Una pregunta por pantalla, con opciones de respuesta.</li>
+            <li data-i18n="home.how2">Puedes navegar entre preguntas antes de finalizar.</li>
+            <li data-i18n="home.how3">No se muestra la respuesta correcta durante el examen.</li>
+            <li data-i18n="home.how4">Al finalizar verás tu calificación y la revisión completa.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h2 data-i18n="home.tipsTitle">Recomendaciones</h2>
+          <ul class="check-list">
+            <li data-i18n="home.tips1">Lee la pregunta completa antes de elegir una opción.</li>
+            <li data-i18n="home.tips2">Si dudas, marca y avanza; vuelve al final.</li>
+            <li data-i18n="home.tips3">Practica varias veces: el banco es amplio.</li>
+            <li data-i18n="home.tips4">Revisa el modo estudio para reforzar temas débiles.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXAM -->
+    <section id="view-exam" class="view" aria-labelledby="exam-title" hidden>
+      <div class="card exam-card">
+        <header class="exam-header">
+          <div>
+            <div class="exam-eyebrow" data-i18n="exam.eyebrow">Examen escrito · Colorado</div>
+            <h1 id="exam-title" class="exam-title">
+              <span data-i18n="exam.questionLabel">Pregunta</span>
+              <span id="exam-current">1</span>
+              <span data-i18n="exam.of">de</span>
+              <span id="exam-total">25</span>
+            </h1>
+          </div>
+          <div class="exam-timer" id="exam-timer" aria-live="polite">00:00</div>
+        </header>
+
+        <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          <div class="progress-bar" id="exam-progress"></div>
+        </div>
+
+        <div class="question-block">
+          <div class="category-tag" id="exam-category">—</div>
+          <p class="question-text" id="exam-question">—</p>
+          <div class="options" id="exam-options" role="radiogroup" aria-label="Opciones"></div>
+        </div>
+
+        <footer class="exam-footer">
+          <button type="button" class="btn btn-ghost" id="btn-prev" data-i18n="exam.prev">Anterior</button>
+          <div class="answer-grid" id="exam-grid" aria-label="Mapa de preguntas"></div>
+          <button type="button" class="btn btn-primary" id="btn-next" data-i18n="exam.next">Siguiente</button>
+          <button type="button" class="btn btn-success" id="btn-finish" data-i18n="exam.finish" hidden>Finalizar examen</button>
+        </footer>
+      </div>
+
+      <div class="card subtle">
+        <button type="button" class="btn btn-link" id="btn-cancel-exam" data-i18n="exam.cancel">
+          Cancelar y volver al inicio
+        </button>
+      </div>
+    </section>
+
+    <!-- RESULTS -->
+    <section id="view-results" class="view" aria-labelledby="results-title" hidden>
+      <div class="card results-card">
+        <div class="result-banner" id="result-banner">
+          <div class="result-status" id="result-status">—</div>
+          <div class="result-score" id="result-score">0%</div>
+          <div class="result-detail">
+            <span><strong id="result-correct">0</strong> <span data-i18n="results.correct">correctas</span></span>
+            <span aria-hidden="true">·</span>
+            <span><strong id="result-incorrect">0</strong> <span data-i18n="results.incorrect">incorrectas</span></span>
+            <span aria-hidden="true">·</span>
+            <span><strong id="result-total">0</strong> <span data-i18n="results.totalQ">preguntas</span></span>
+          </div>
+          <div class="result-time" id="result-time">—</div>
+        </div>
+
+        <div class="actions">
+          <button type="button" class="btn btn-primary" id="btn-restart" data-i18n="results.restart">
+            Reiniciar examen
+          </button>
+          <button type="button" class="btn btn-secondary" id="btn-review-toggle" data-i18n="results.reviewToggle">
+            Mostrar revisión
+          </button>
+          <button type="button" class="btn btn-ghost" id="btn-home" data-i18n="results.home">
+            Volver al inicio
+          </button>
+        </div>
+      </div>
+
+      <div class="review" id="review" hidden></div>
+    </section>
+
+    <!-- STUDY -->
+    <section id="view-study" class="view" aria-labelledby="study-title" hidden>
+      <div class="card">
+        <h1 id="study-title" data-i18n="study.title">Modo estudio por categoría</h1>
+        <p class="lede" data-i18n="study.lede">
+          Selecciona una categoría para estudiar. En este modo se muestra la
+          respuesta correcta y la explicación inmediatamente después de
+          responder.
+        </p>
+        <div class="categories" id="study-categories"></div>
+        <div class="actions">
+          <button type="button" class="btn btn-ghost" id="btn-study-home" data-i18n="study.home">
+            Volver al inicio
+          </button>
+        </div>
+      </div>
+
+      <div class="card study-card" id="study-card" hidden>
+        <header class="study-header">
+          <div class="category-tag" id="study-category">—</div>
+          <div class="study-counter">
+            <span data-i18n="study.questionLabel">Pregunta</span>
+            <span id="study-current">1</span>
+            <span data-i18n="study.of">de</span>
+            <span id="study-total">1</span>
+          </div>
+        </header>
+
+        <p class="question-text" id="study-question">—</p>
+        <div class="options" id="study-options" role="radiogroup" aria-label="Opciones"></div>
+
+        <div class="explanation" id="study-explanation" hidden>
+          <div class="explanation-status" id="study-status">—</div>
+          <p id="study-explanation-text">—</p>
+          <p class="source" id="study-source">—</p>
+        </div>
+
+        <footer class="study-footer">
+          <button type="button" class="btn btn-ghost" id="btn-study-prev" data-i18n="study.prev">Anterior</button>
+          <button type="button" class="btn btn-secondary" id="btn-study-exit" data-i18n="study.exit">Cambiar categoría</button>
+          <button type="button" class="btn btn-primary" id="btn-study-next" data-i18n="study.next">Siguiente</button>
+        </footer>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p data-i18n="footer.text">
+        Proyecto educativo independiente · Sin afiliación con el Departamento de
+        Vehículos de Motor de Colorado · Uso bajo tu propia responsabilidad.
+      </p>
+    </div>
+  </footer>
+
+  <script src="./js/questions.js"></script>
+  <script src="./js/i18n.js"></script>
+  <script src="./js/app.js"></script>
+</body>
+</html>
