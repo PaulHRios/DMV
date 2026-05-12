@@ -32,6 +32,11 @@
       'home.statsPassRate': 'Aprobados',
       'home.statsClear': 'Borrar estadísticas',
       'home.statsClearConfirm': '¿Borrar tu historial de exámenes?',
+      'home.weakCatsTitle': 'Categorías a reforzar',
+      'home.weakCatsHint': 'Tus 3 categorías con mayor tasa de error a través de todos los exámenes. Toca "Practicar" para estudiar esa categoría.',
+      'home.weakCatsEmpty': 'Aún no hay datos suficientes. Termina al menos un examen para ver tus categorías a reforzar.',
+      'home.practice': 'Practicar',
+      'home.practiceAria': 'Practicar la categoría {cat}',
 
       'exam.eyebrow': 'Examen escrito · Colorado',
       'exam.eyebrowHard': 'Examen avanzado · Colorado',
@@ -142,6 +147,11 @@
       'home.statsPassRate': 'Pass rate',
       'home.statsClear': 'Clear stats',
       'home.statsClearConfirm': 'Clear your exam history?',
+      'home.weakCatsTitle': 'Categories to reinforce',
+      'home.weakCatsHint': 'Your 3 categories with the highest error rate across all exams. Tap "Practice" to study that category.',
+      'home.weakCatsEmpty': 'Not enough data yet. Finish at least one exam to see your weakest categories.',
+      'home.practice': 'Practice',
+      'home.practiceAria': 'Practice the {cat} category',
 
       'exam.eyebrow': 'Written exam · Colorado',
       'exam.eyebrowHard': 'Advanced exam · Colorado',

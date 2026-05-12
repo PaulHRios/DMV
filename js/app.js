@@ -137,6 +137,14 @@
   function recordExam(result) {
     const stats = loadStats();
     stats.exams = stats.exams || [];
+    // Desglose por categoría para alimentar las stats acumuladas
+    const byCategory = {};
+    result.details.forEach((d) => {
+      const c = d.question.category;
+      if (!byCategory[c]) byCategory[c] = { correct: 0, total: 0 };
+      byCategory[c].total += 1;
+      if (d.correct) byCategory[c].correct += 1;
+    });
     stats.exams.push({
       date: Date.now(),
       total: result.total,
@@ -146,10 +154,94 @@
       thresholdPercent: result.passingThreshold || CONFIG.PASSING_PERCENT,
       durationMs: result.durationMs,
       hard: !!result.hard,
+      byCategory: byCategory,
     });
     if (stats.exams.length > 200) stats.exams = stats.exams.slice(-200);
     saveStats(stats);
   }
+
+  function aggregateCategoryStats() {
+    const stats = loadStats();
+    const agg = {};
+    (stats.exams || []).forEach((e) => {
+      const cats = e.byCategory || {};
+      Object.keys(cats).forEach((cat) => {
+        if (!agg[cat]) agg[cat] = { correct: 0, total: 0 };
+        agg[cat].correct += cats[cat].correct || 0;
+        agg[cat].total += cats[cat].total || 0;
+      });
+    });
+    return agg;
+  }
+
+  function renderWeakCategories() {
+    const root = $('#weak-cats');
+    if (!root) return;
+    const empty = $('#weak-cats-empty');
+    const agg = aggregateCategoryStats();
+    const entries = Object.keys(agg)
+      .filter((cat) => agg[cat].total >= 2)
+      .map((cat) => ({
+        cat: cat,
+        correct: agg[cat].correct,
+        total: agg[cat].total,
+        errors: agg[cat].total - agg[cat].correct,
+        errorRate: 1 - agg[cat].correct / agg[cat].total,
+      }))
+      .filter((e) => e.errors > 0)
+      .sort((a, b) => b.errorRate - a.errorRate || b.errors - a.errors)
+      .slice(0, 3);
+
+    root.innerHTML = '';
+    if (entries.length === 0) {
+      if (empty) empty.hidden = false;
+      root.hidden = true;
+      return;
+    }
+    if (empty) empty.hidden = true;
+    root.hidden = false;
+
+    entries.forEach((e) => {
+      const row = document.createElement('div');
+      row.className = 'weak-row';
+
+      const name = document.createElement('div');
+      name.className = 'weak-name';
+      name.textContent = tCategory(e.cat);
+
+      const barWrap = document.createElement('div');
+      barWrap.className = 'weak-bar-wrap';
+      const fill = document.createElement('div');
+      fill.className = 'weak-bar-fill';
+      // El ancho refleja la tasa de error
+      fill.style.width = Math.max(6, Math.round(e.errorRate * 100)) + '%';
+      barWrap.appendChild(fill);
+
+      const score = document.createElement('div');
+      score.className = 'weak-score';
+      score.textContent = e.errors + '/' + e.total + ' · ' + Math.round(e.errorRate * 100) + '%';
+
+      const practice = document.createElement('button');
+      practice.type = 'button';
+      practice.className = 'btn-weak-practice';
+      practice.textContent = window.I18N.t('home.practice');
+      practice.setAttribute('aria-label', window.I18N.t('home.practiceAria', { cat: tCategory(e.cat) }));
+      practice.addEventListener('click', () => {
+        state.study = null;
+        $('#study-card').hidden = true;
+        renderStudyCategories();
+        showView('view-study');
+        startStudy(e.cat);
+      });
+
+      row.appendChild(name);
+      row.appendChild(barWrap);
+      row.appendChild(score);
+      row.appendChild(practice);
+      root.appendChild(row);
+    });
+  }
+
   function renderStats() {
     const stats = loadStats();
     const ex = stats.exams || [];
@@ -158,15 +250,16 @@
       $('#stat-best').textContent = '—';
       $('#stat-avg').textContent = '—';
       $('#stat-passrate').textContent = '—';
-      return;
+    } else {
+      const best = ex.reduce((m, e) => Math.max(m, e.percent), 0);
+      const avg = Math.round(ex.reduce((s, e) => s + e.percent, 0) / ex.length);
+      const passed = ex.filter((e) => e.passed).length;
+      const passRate = Math.round((passed / ex.length) * 100);
+      $('#stat-best').textContent = best + '%';
+      $('#stat-avg').textContent = avg + '%';
+      $('#stat-passrate').textContent = passRate + '%';
     }
-    const best = ex.reduce((m, e) => Math.max(m, e.percent), 0);
-    const avg = Math.round(ex.reduce((s, e) => s + e.percent, 0) / ex.length);
-    const passed = ex.filter((e) => e.passed).length;
-    const passRate = Math.round((passed / ex.length) * 100);
-    $('#stat-best').textContent = best + '%';
-    $('#stat-avg').textContent = avg + '%';
-    $('#stat-passrate').textContent = passRate + '%';
+    renderWeakCategories();
   }
 
   /* ---------- Estado del examen ---------- */
